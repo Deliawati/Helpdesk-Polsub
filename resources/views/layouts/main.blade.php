@@ -119,6 +119,7 @@
 
     <!-- Main JS -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/activate-sidebar.js') }}"></script>
 
     <!-- Page JS -->
     @yield('script')
