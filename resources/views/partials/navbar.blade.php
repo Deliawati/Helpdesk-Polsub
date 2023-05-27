@@ -10,7 +10,7 @@
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
-                <h5 class="mb-0">Selamat Datang, Jhon Doe!</h5>
+                <h5 class="mb-0">Selamat Datang, {{Auth::user()->name}}!</h5>
             </div>
         </div>
         <!-- /Search -->
@@ -21,16 +21,20 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt="profile" class="w-px-40 h-auto rounded-circle" />
+                        <img width="96" height="96" src="https://img.icons8.com/color/96/music-robot.png" alt="music-robot" class="w-px-40 h-auto rounded-circle"/>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                        <a class="dropdown-item" href="javascript:;">
-                            <i class="bx bx-power-off me-2"></i>
-                            <span class="align-middle">Log Out</span>
-                        </a>
-                    </li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                                <i class="bx bx-power-off me-2"></i>
+                                <span class="align-middle">Log Out</span>
+                            </a>
+                        </li>
+                    </form>
                 </ul>
             </li>
             <!--/ User -->

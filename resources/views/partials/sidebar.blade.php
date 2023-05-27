@@ -46,13 +46,53 @@
         </li>
 
         <!-- Components -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Setting</span></li>
-        <!-- Cards -->
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Master</span></li>        
+        <li class="menu-item">
+            <a href="javasscript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-info-circle"></i>
+                <div data-i18n="Basic">Info Akademik</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="layouts-without-menu.html" class="menu-link">
+                    <div data-i18n="Without menu">Layanan</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="layouts-without-navbar.html" class="menu-link">
+                    <div data-i18n="Without navbar">Kalender</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="layouts-container.html" class="menu-link">
+                    <div data-i18n="Container">Peraturan</div>
+                  </a>
+                </li>
+            </ul>
+        </li>
         <li class="menu-item">
             <a href="{{route('master-users.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-group"></i>
                 <div data-i18n="Basic">Users</div>
             </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="layouts-without-menu.html" class="menu-link">
+                    <div data-i18n="Without menu">Without menu</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="layouts-without-navbar.html" class="menu-link">
+                    <div data-i18n="Without navbar">Without navbar</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="layouts-container.html" class="menu-link">
+                    <div data-i18n="Container">Container</div>
+                  </a>
+                </li>
+            </ul>
         </li>
     </ul>
 </aside>

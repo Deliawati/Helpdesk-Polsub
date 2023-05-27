@@ -26,9 +26,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
     Route::resource('master-users', UserController::class);
     Route::resource('master-tiket', TiketController::class);
     Route::resource('master-chatbot', ChatbotController::class);
     Route::resource('master-faq', FaqController::class);
-// });
+});
