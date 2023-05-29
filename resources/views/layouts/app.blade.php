@@ -1,80 +1,64 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@yield('title') | Helpdesk Politeknik Negeri Subang</title>
+    @vite([])
+    <link rel="stylesheet" href="{{ asset('marshmallow/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('marshmallow/vendors/owl.carousel/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('marshmallow/vendors/owl.carousel/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('marshmallow/vendors/aos/css/aos.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('marshmallow/vendors/jquery-flipster/css/jquery.flipster.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('marshmallow/css/style.css') }}">
+    <link rel="shortcut icon" href="{{ asset('logoPOLSUB2-1.png') }}" />
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        .logo {
+            width: 70px !important;
+        }
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+        @media screen and (max-width: 768px) {
+            .logo {
+                width: 37px !important;
+            }
+        }
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+        @media screen and (min-width:576px) {
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+        }
+    </style>
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @yield('head')
+
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <div id="mobile-menu-overlay"></div>
 
-                    </ul>
+    <!-- Navbar -->
+    @include('partials.pengguna.navbar')
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+    <div class="page-body-wrapper">
+        @yield('content')
     </div>
+
+    <!-- Footer -->
+    @include('partials.pengguna.footer')
+
+    <script src="{{ asset('marshmallow/vendors/base/vendor.bundle.base.js') }}"></script>
+    <script src="{{ asset('marshmallow/vendors/owl.carousel/js/owl.carousel.js') }}"></script>
+    <script src="{{ asset('marshmallow/vendors/aos/js/aos.js') }}"></script>
+    {{-- <script src="{{ asset('marshmallow/vendors/jquery-flipster/js/jquery.flipster.min.js') }}"></script> --}}
+    <script src="{{ asset('marshmallow/js/template.js') }}"></script>
+
+    @yield('script')
 </body>
+
 </html>

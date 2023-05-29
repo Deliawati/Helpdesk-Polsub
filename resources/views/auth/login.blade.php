@@ -74,7 +74,7 @@
             <div class="card-body">
               <!-- Logo -->
               <div class="app-brand justify-content-center">
-                <a href="index.html" class="app-brand-link gap-2">
+                <a href="{{route('welcome')}}" class="app-brand-link gap-2">
                   <span class="app-brand-logo demo">
                     <img src="{{ asset('logoPOLSUB2-1.png') }}" alt="Brand Logo" class="img-fluid" width="40" />
                   </span>
@@ -138,9 +138,9 @@
               </form>
 
               <p class="text-center">
-                <span>New on our platform?</span>
-                <a href="auth-register-basic.html">
-                  <span>Create an account</span>
+                <span>Belum punya akun?</span>
+                <a href="{{route('register')}}">
+                  <span>Register</span>
                 </a>
               </p>
             </div>

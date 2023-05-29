@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
@@ -32,3 +32,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('master-chatbot', ChatbotController::class);
     Route::resource('master-faq', FaqController::class);
 });
+
+Route::get('/chatbot', [App\Http\Controllers\Pengguna\ChatbotController::class, 'index'])->name('chatbot');
+Route::get('/pertanyaan', [App\Http\Controllers\Pengguna\PertanyaanController::class, 'index'])->name('pertanyaan');
+Route::get('/kalender-akademik', [App\Http\Controllers\Pengguna\KalenderAkademikController::class, 'index'])->name('kalender-akademik');
+Route::get('/layanan-akademik', [App\Http\Controllers\Pengguna\LayananAkademikController::class, 'index'])->name('layanan-akademik');
+Route::get('/peraturan-akademik', [App\Http\Controllers\Pengguna\PeraturanAkademikController::class, 'index'])->name('peraturan-akademik');
