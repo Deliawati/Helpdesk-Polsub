@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         User::create([
-            'nim' => '0000000001',
             'name' => 'Delia Admin',
             'email' => 'delia.admin@polsub.ac.id',
             'password' => bcrypt('admin'),
