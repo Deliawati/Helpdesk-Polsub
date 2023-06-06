@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Kelola Data User')
+
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
 

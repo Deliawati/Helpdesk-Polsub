@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master\InfoAkademik;
 
 use App\Http\Controllers\Controller;
+use App\Models\LayananAkademik;
 use Illuminate\Http\Request;
 
 class LayananController extends Controller
@@ -13,6 +14,8 @@ class LayananController extends Controller
     public function index()
     {
         //
+        $data['layanans'] = LayananAkademik::all();
+        return view('master.info-akademik.layanan.index', $data);
     }
 
     /**
@@ -29,6 +32,15 @@ class LayananController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nama' => 'required',
+            'melalui' => 'required',
+            'konfirmasi' => 'required',
+        ]);
+
+        LayananAkademik::create($request->all());
+
+        return redirect()->route('master-layanan-akademik.index')->with('success', 'Layanan Akademik berhasil ditambahkan');
     }
 
     /**
@@ -53,6 +65,15 @@ class LayananController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'nama' => 'required',
+            'melalui' => 'required',
+            'konfirmasi' => 'required',
+        ]);
+
+        LayananAkademik::find($id)->update($request->all());
+
+        return redirect()->route('master-layanan-akademik.index')->with('success', 'Layanan Akademik berhasil diubah');
     }
 
     /**
@@ -61,5 +82,8 @@ class LayananController extends Controller
     public function destroy(string $id)
     {
         //
+        LayananAkademik::find($id)->delete();
+
+        return redirect()->route('master-layanan-akademik.index')->with('success', 'Layanan Akademik berhasil dihapus');
     }
 }

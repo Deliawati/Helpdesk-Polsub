@@ -34,7 +34,7 @@
                             <input class="form-check-input" type="radio" name="role" id="role2" value="user"
                                 @if ($user->role == 'user') checked @endif>
                             <label class="form-check-label" for="role2">
-                                Pengguna
+                                User (Pengguna)
                             </label>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master\InfoAkademik;
 
 use App\Http\Controllers\Controller;
+use App\Models\KalenderAkademik;
 use Illuminate\Http\Request;
 
 class KalenderController extends Controller
@@ -13,6 +14,8 @@ class KalenderController extends Controller
     public function index()
     {
         //
+        $data['kalenders'] = KalenderAkademik::all();
+        return view('master.info-akademik.kalender.index', $data);
     }
 
     /**
@@ -29,6 +32,23 @@ class KalenderController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'tahun_ajaran' => 'required|regex:/^\d{4}\/\d{4}$/',
+            'file' => 'required|mimes:pdf|max:2048',
+        ]);
+
+        // store file to storage/app/public/kalender-akademik
+        $file = $request->file('file');
+        $file_name = time() . '_' . $file->getClientOriginalName();
+        $file->storeAs('public/kalender-akademik', $file_name);
+
+        // store to database
+        KalenderAkademik::create( [
+            'tahun_ajaran' => $request->tahun_ajaran,
+            'file' => $file_name,
+        ]);
+
+        return redirect()->route('master-kalender-akademik.index')->with('success', 'Kalender Akademik berhasil ditambahkan');
     }
 
     /**
@@ -53,6 +73,35 @@ class KalenderController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'tahun_ajaran' => 'required|regex:/^\d{4}\/\d{4}$/',
+            'file' => 'nullable|mimes:pdf|max:2048',
+        ]);
+
+        $kalender = KalenderAkademik::findOrFail($id);
+
+        if ($request->hasFile('file')) {
+            // delete old file
+            unlink(storage_path('app/public/kalender-akademik/' . $kalender->file));
+
+            // store new file
+            $file = $request->file('file');
+            $file_name = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('public/kalender-akademik', $file_name);
+
+            // update to database
+            $kalender->update([
+                'tahun_ajaran' => $request->tahun_ajaran,
+                'file' => $file_name,
+            ]);
+        } else {
+            // update to database
+            $kalender->update([
+                'tahun_ajaran' => $request->tahun_ajaran,
+            ]);
+        }
+
+        return redirect()->route('master-kalender-akademik.index')->with('success', 'Kalender Akademik berhasil diubah');
     }
 
     /**
@@ -61,5 +110,14 @@ class KalenderController extends Controller
     public function destroy(string $id)
     {
         //
+        $kalender = KalenderAkademik::findOrFail($id);
+
+        // delete file
+        unlink(storage_path('app/public/kalender-akademik/' . $kalender->file));
+
+        // delete from database
+        $kalender->delete();
+
+        return redirect()->route('master-kalender-akademik.index')->with('success', 'Kalender Akademik berhasil dihapus');
     }
 }

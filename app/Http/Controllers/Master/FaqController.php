@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
 use Illuminate\Http\Request;
 
 class FaqController extends Controller
@@ -13,7 +14,8 @@ class FaqController extends Controller
     public function index()
     {
         //
-        return view('master.modul.faq.index');
+        $data['faqs'] = Faq::all();
+        return view('master.modul.faq.index', $data);
     }
 
     /**
@@ -30,6 +32,14 @@ class FaqController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'pertanyaan' => 'required',
+            'jawaban' => 'required',
+        ]);
+
+        Faq::create($request->all());
+
+        return redirect()->route('modul-faq.index')->with('success', 'FAQ berhasil ditambahkan');
     }
 
     /**
@@ -54,6 +64,14 @@ class FaqController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'pertanyaan' => 'required',
+            'jawaban' => 'required',
+        ]);
+
+        Faq::find($id)->update($request->all());
+
+        return redirect()->route('modul-faq.index')->with('success', 'FAQ berhasil diubah');
     }
 
     /**
@@ -62,5 +80,8 @@ class FaqController extends Controller
     public function destroy(string $id)
     {
         //
+        Faq::find($id)->delete();
+
+        return redirect()->route('modul-faq.index')->with('success', 'FAQ berhasil dihapus');
     }
 }

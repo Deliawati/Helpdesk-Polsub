@@ -31,7 +31,7 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="role" id="role2" value="user">
                             <label class="form-check-label" for="role2">
-                                Pengguna
+                                User (Pengguna)
                             </label>
                         </div>
                     </div>

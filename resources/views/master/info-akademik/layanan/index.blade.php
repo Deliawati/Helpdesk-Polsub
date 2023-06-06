@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Kelola Data FAQ')
+@section('title', 'Kelola Layanan Akademik')
 
 @section('head')
     <script src="https://cdn.tiny.cloud/1/j5gqw60qypi9txea3m892uu1z4c38jvmw74cpvjetog9q3td/tinymce/6/tinymce.min.js"
@@ -31,39 +31,59 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="d-flex justify-content-between align-items-center">
-                    Data FAQ
+                    Data Layanan Akademik
                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
                         <i class="bx bx-plus"></i>
                     </button>
                 </h5>
 
-                @include('master.modul.faq.createModal')
+                @include('master.info-akademik.layanan.createModal')
 
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#ID</th>
-                                <th scope="col">Pertanyaan</th>
-                                <th scope="col">Jawaban</th>
+                                <th scope="col">Layanan</th>
+                                <th scope="col">Melalui</th>
+                                <th scope="col">Konfirmasi</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($faqs as $faq)
+                            @foreach ($layanans as $layanan)
                                 <tr>
-                                    <th scope="row">{{ $faq->id }}</th>
-                                    <td>{{ $faq->pertanyaan }}</td>
-                                    <td>{!! $faq->jawaban !!}</td>
+                                    <th scope="row">{{ $layanan->id }}</th>
+                                    <td>{!! $layanan->nama !!}</td>
+                                    <td class="melalui">
+                                        <ul>
+                                            @foreach (explode(';', $layanan->melalui) as $melalui)
+                                                <li>
+                                                    @if(filter_var($melalui, FILTER_VALIDATE_URL))
+                                                        <a href="{{ $melalui }}" target="_blank">{{ $melalui }}</a>
+                                                    @else
+                                                        {{ $melalui }}
+                                                    @endif
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
                                     <td>
-                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $faq->id }}">
+                                        <ul>
+                                            @foreach (explode(';', $layanan->konfirmasi) as $konfirmasi)
+                                                <li>{{ $konfirmasi }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{$layanan->id}}">
                                             <i class="bx bx-edit"></i>
                                         </button>
 
-                                        @include('master.modul.faq.editModal')
+                                        @include('master.info-akademik.layanan.editModal')
 
-                                        <form method="POST" action="{{ route('modul-faq.destroy', $faq->id) }}"
+                                        <form method="POST"
+                                            action="{{ route('master-layanan-akademik.destroy', $layanan->id) }}"
                                             class="d-inline">
                                             @csrf
                                             @method('DELETE')
@@ -89,8 +109,7 @@
             selector: 'textarea',
             plugins: 'link lists wordcount advlist',
             toolbar: 'undo redo | blocks fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-            menubar: false,
-            forced_root_block: 'div'
+            menubar: false
         });
     </script>
 @endsection

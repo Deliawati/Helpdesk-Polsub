@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="{{route('welcome')}}" class="app-brand-link">
             <span class="app-brand-logo demo">
                 <img  src="{{ asset('logoPOLSUB2-1.png') }}" alt="Brand Logo" class="img-fluid" width="25">
             </span>
@@ -27,19 +27,19 @@
             <span class="menu-header-text">Modul</span>
         </li>
         <li class="menu-item">
-            <a href="{{route('master-chatbot.index')}}" class="menu-link">
+            <a href="{{route('modul-chatbot.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-bot"></i>
                 <div data-i18n="Account Settings">Chatbot</div>
             </a>
         </li>
         <li class="menu-item">
-            <a href="{{route('master-tiket.index')}}" class="menu-link">
+            <a href="{{route('modul-tiket.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-band-aid"></i>
                 <div data-i18n="Authentications">Tiket</div>
             </a>
         </li>
         <li class="menu-item">
-            <a href="{{route('master-faq.index')}}" class="menu-link">
+            <a href="{{route('modul-faq.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-question-mark"></i>
                 <div data-i18n="Authentications">FAQ</div>
             </a>
@@ -54,45 +54,27 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="layouts-without-menu.html" class="menu-link">
+                  <a href="{{route('master-layanan-akademik.index')}}" class="menu-link">
                     <div data-i18n="Without menu">Layanan</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-without-navbar.html" class="menu-link">
+                  <a href="{{route('master-kalender-akademik.index')}}" class="menu-link">
                     <div data-i18n="Without navbar">Kalender</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-container.html" class="menu-link">
+                  <a href="{{route('master-peraturan-akademik.index')}}" class="menu-link">
                     <div data-i18n="Container">Peraturan</div>
                   </a>
                 </li>
             </ul>
         </li>
-        <li class="menu-item">
+        {{-- <li class="menu-item">
             <a href="{{route('master-users.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-group"></i>
                 <div data-i18n="Basic">Users</div>
-            </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="layouts-without-menu.html" class="menu-link">
-                    <div data-i18n="Without menu">Without menu</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-without-navbar.html" class="menu-link">
-                    <div data-i18n="Without navbar">Without navbar</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-container.html" class="menu-link">
-                    <div data-i18n="Container">Container</div>
-                  </a>
-                </li>
-            </ul>
-        </li>
+            </a>           
+        </li> --}}
     </ul>
 </aside>

@@ -8,7 +8,33 @@
 @section('content')
 <section class="our-services">
     <div class="container pt-5">
-        <h1>Hai Peraturan + FAQ</h1>
+        <h4>Peraturan Akademik</h4>
+        <p>Berikut adalah peraturan akademik yang dapat diakses oleh mahasiswa.</p>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Peraturan</th>
+                        <th scope="col">File</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($peraturans as $peraturan)
+                        <tr>
+                            <th scope="row">{{ $loop->index+1 }}</th>
+                            <td>{!! $peraturan->nama !!}</td>
+                            <td>
+                                <a href="{{ asset('storage/peraturan-akademik/' . $peraturan->file) }}" target="_blank">
+                                    <i class="mdi mdi-file-pdf-box"></i> {{ $peraturan->file }}
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </section>
 @endsection

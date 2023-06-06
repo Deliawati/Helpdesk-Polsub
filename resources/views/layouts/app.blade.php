@@ -16,6 +16,19 @@
     <link rel="shortcut icon" href="{{ asset('logoPOLSUB2-1.png') }}" />
 
     <style>
+        textarea {
+            resize:vertical;
+        }
+
+        .navbar {
+            width: 100%;
+            padding: 0.8rem 0.5rem;
+        }
+
+        .form-control {
+            padding: 0.7rem;
+        }
+
         .logo {
             width: 70px !important;
         }
@@ -39,13 +52,13 @@
 
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="background-color: #fafafa;">
     <div id="mobile-menu-overlay"></div>
 
     <!-- Navbar -->
     @include('partials.pengguna.navbar')
 
-    <div class="page-body-wrapper">
+    <div class="page-body-wrapper mb-5">
         @yield('content')
     </div>
 

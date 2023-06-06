@@ -1,11 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Kelola Data FAQ')
-
-@section('head')
-    <script src="https://cdn.tiny.cloud/1/j5gqw60qypi9txea3m892uu1z4c38jvmw74cpvjetog9q3td/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script>
-@endsection
+@section('title', 'Kelola Peraturan Akademik')
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -31,39 +26,43 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="d-flex justify-content-between align-items-center">
-                    Data FAQ
+                    Data Peraturan Akademik
                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
                         <i class="bx bx-plus"></i>
                     </button>
                 </h5>
 
-                @include('master.modul.faq.createModal')
+                @include('master.info-akademik.peraturan.createModal')
 
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#ID</th>
-                                <th scope="col">Pertanyaan</th>
-                                <th scope="col">Jawaban</th>
+                                <th scope="col">Peraturan</th>
+                                <th scope="col">File</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($faqs as $faq)
+                            @foreach ($peraturans as $peraturan)
                                 <tr>
-                                    <th scope="row">{{ $faq->id }}</th>
-                                    <td>{{ $faq->pertanyaan }}</td>
-                                    <td>{!! $faq->jawaban !!}</td>
+                                    <td>{{ $peraturan->id }}</td>
+                                    <td>{{ $peraturan->nama }}</td>
                                     <td>
-                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $faq->id }}">
+                                        <a href="{{ asset('storage/peraturan-akademik/' . $peraturan->file) }}" target="_blank">
+                                            <i class="bx bx-file"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{$peraturan->id}}">
                                             <i class="bx bx-edit"></i>
                                         </button>
 
-                                        @include('master.modul.faq.editModal')
+                                        @include('master.info-akademik.peraturan.editModal')
 
-                                        <form method="POST" action="{{ route('modul-faq.destroy', $faq->id) }}"
+                                        <form method="POST"
+                                            action="{{ route('master-peraturan-akademik.destroy', $peraturan->id) }}"
                                             class="d-inline">
                                             @csrf
                                             @method('DELETE')
@@ -72,7 +71,7 @@
                                                 <i class="bx bx-trash"></i>
                                             </button>
                                         </form>
-                                    </td>
+                                    </td>                              
                                 </tr>
                             @endforeach
                         </tbody>
@@ -84,13 +83,4 @@
 @endsection
 
 @section('script')
-    <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'link lists wordcount advlist',
-            toolbar: 'undo redo | blocks fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-            menubar: false,
-            forced_root_block: 'div'
-        });
-    </script>
 @endsection
