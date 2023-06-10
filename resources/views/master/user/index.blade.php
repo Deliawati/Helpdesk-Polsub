@@ -2,6 +2,10 @@
 
 @section('title', 'Kelola Data User')
 
+@section('head')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+@endsection
+
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
 
@@ -12,7 +16,7 @@
             </div>
         @endif
 
-        @if($errors->any())
+        @if ($errors->any())
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <ul class="mb-0">
                     @foreach ($errors->all() as $error)
@@ -55,17 +59,20 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->role }}</td>
                                     <td>
-                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{$user->id}}">
+                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#editModal{{ $user->id }}">
                                             <i class="bx bx-edit"></i>
                                         </button>
 
                                         <!-- Modal -->
                                         @include('master.user.editModal')
 
-                                        <form method="POST" action="{{ route('master-users.destroy', $user->id) }}" class="d-inline">
+                                        <form method="POST" action="{{ route('master-users.destroy', $user->id) }}"
+                                            class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                            <button class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
                                                 <i class="bx bx-trash"></i>
                                             </button>
                                         </form>
@@ -81,4 +88,11 @@
 @endsection
 
 @section('script')
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('table').DataTable();
+        });
+    </script>
 @endsection

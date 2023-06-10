@@ -7,6 +7,7 @@ use App\Http\Controllers\Master\InfoAkademik\LayananController;
 use App\Http\Controllers\Master\InfoAkademik\PeraturanController;
 use App\Http\Controllers\Master\TiketController;
 use App\Http\Controllers\Master\UserController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Auth::routes();
 

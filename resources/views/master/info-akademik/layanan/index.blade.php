@@ -5,6 +5,7 @@
 @section('head')
     <script src="https://cdn.tiny.cloud/1/j5gqw60qypi9txea3m892uu1z4c38jvmw74cpvjetog9q3td/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 @endsection
 
 @section('content')
@@ -59,8 +60,9 @@
                                         <ul>
                                             @foreach (explode(';', $layanan->melalui) as $melalui)
                                                 <li>
-                                                    @if(filter_var($melalui, FILTER_VALIDATE_URL))
-                                                        <a href="{{ $melalui }}" target="_blank">{{ $melalui }}</a>
+                                                    @if (filter_var($melalui, FILTER_VALIDATE_URL))
+                                                        <a href="{{ $melalui }}"
+                                                            target="_blank">{{ $melalui }}</a>
                                                     @else
                                                         {{ $melalui }}
                                                     @endif
@@ -76,7 +78,8 @@
                                         </ul>
                                     </td>
                                     <td>
-                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{$layanan->id}}">
+                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#editModal{{ $layanan->id }}">
                                             <i class="bx bx-edit"></i>
                                         </button>
 
@@ -104,12 +107,17 @@
 @endsection
 
 @section('script')
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'link lists wordcount advlist',
-            toolbar: 'undo redo | blocks fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-            menubar: false
+        $(document).ready(function() {
+            $('table').DataTable();
+            tinymce.init({
+                selector: 'textarea',
+                plugins: 'link lists wordcount advlist',
+                toolbar: 'undo redo | blocks fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                menubar: false
+            });
         });
     </script>
 @endsection

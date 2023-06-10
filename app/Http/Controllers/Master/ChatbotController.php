@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chatbot;
 use Illuminate\Http\Request;
 
 class ChatbotController extends Controller
@@ -13,7 +14,8 @@ class ChatbotController extends Controller
     public function index()
     {
         //
-        return view('master.modul.chatbot.index');
+        $data['chatbots'] = Chatbot::all();
+        return view('master.modul.chatbot.index', $data);
     }
 
     /**
@@ -30,6 +32,17 @@ class ChatbotController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'pertanyaan' => 'required',
+            'jawaban' => 'required',
+        ]);
+
+        Chatbot::create([
+            'pertanyaan' => $request->pertanyaan,
+            'jawaban' => $request->jawaban,
+        ]);
+
+        return redirect()->route('modul-chatbot.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -54,6 +67,17 @@ class ChatbotController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'pertanyaan' => 'required',
+            'jawaban' => 'required',
+        ]);
+
+        Chatbot::find($id)->update([
+            'pertanyaan' => $request->pertanyaan,
+            'jawaban' => $request->jawaban,
+        ]);
+
+        return redirect()->route('modul-chatbot.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -62,5 +86,8 @@ class ChatbotController extends Controller
     public function destroy(string $id)
     {
         //
+        Chatbot::find($id)->delete();
+
+        return redirect()->route('modul-chatbot.index')->with('success', 'Data berhasil dihapus');
     }
 }

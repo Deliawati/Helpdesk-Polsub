@@ -1,0 +1,152 @@
+{
+    "percakapan": [
+      {
+        "pertanyaan": "Halo, apa kabar?",
+        "response": "Halo! Kabar baik, terima kasih. Bagaimana denganmu?"
+      },
+      {
+        "pertanyaan": "Apa rencanamu hari ini?",
+        "response": "Hari ini saya memiliki beberapa pertemuan di kantor dan kemudian akan bertemu teman-teman di malam hari."
+      },
+      {
+        "pertanyaan": "Maukah kamu membantu saya dengan pekerjaan rumah?",
+        "response": "Tentu, saya akan senang membantu. Apa yang perlu kamu lakukan?"
+      },
+      {
+        "pertanyaan": "Apa film yang baru-baru ini kamu tonton?",
+        "response": "Saya baru-baru ini menonton film Spider-Man: No Way Home dan saya sangat menikmatinya!"
+      },
+      {
+        "pertanyaan": "Bagaimana cara membuat kue cokelat yang enak?",
+        "response": "Untuk membuat kue cokelat yang enak, pertama-tama campurkan tepung, gula, dan bubuk kakao. Kemudian tambahkan telur, mentega cair, dan sedikit susu. Aduk rata dan panggang dalam oven selama 25 menit."
+      },
+      {
+        "pertanyaan": "Apa hobi favoritmu?",
+        "response": "Hobi favorit saya adalah membaca buku dan bermain musik."
+      },
+      {
+        "pertanyaan": "Apakah kamu suka berenang?",
+        "response": "Ya, saya suka berenang. Ini adalah salah satu olahraga favorit saya."
+      },
+      {
+        "pertanyaan": "Apakah kamu pernah bepergian ke luar negeri?",
+        "response": "Ya, saya pernah bepergian ke beberapa negara di Eropa dan Asia. Saya suka menjelajahi budaya baru."
+      },
+      {
+        "pertanyaan": "Bagaimana cara memasak nasi yang enak?",
+        "response": "Untuk memasak nasi yang enak, pertama-tama cuci beras hingga airnya jernih. Kemudian masukkan beras ke dalam panci dengan air secukupnya. Rebus hingga mendidih, lalu tutup panci dan kecilkan api. Biarkan nasi matang selama sekitar 15-20 menit. Setelah itu, diamkan sejenak sebelum dihidangkan."
+      },
+      {
+        "pertanyaan": "Apakah kamu suka mendengarkan musik?",
+        "response": "Ya, saya suka mendengarkan musik. Musik dapat membuat suasana hati saya lebih baik."
+      },
+      {
+        "pertanyaan": "Apa makanan favoritmu?",
+        "response": "Makanan favorit saya adalah sushi. Saya suka sensasi rasa dan teksturnya."
+      },
+      {
+        "pertanyaan": "Apakah kamu pernah naik gunung?",
+        "response": "Ya, saya pernah naik gunung. Menikmati pemandangan dari puncak gunung adalah pengalaman yang luar biasa."
+      },
+      {
+        "pertanyaan": "Apa yang kamu lakukan di akhir pekan?",
+        "response": "Di akhir pekan, saya suka bersantai di rumah, membaca buku, dan menonton film."
+      },
+      {
+        "pertanyaan": "Bagaimana pendapatmu tentang teknologi terbaru?",
+        "response": "Saya tertarik dengan teknologi terbaru. Saya percaya teknologi dapat membawa banyak kemajuan dalam berbagai bidang."
+      },
+      {
+        "pertanyaan": "Apakah kamu suka menonton olahraga?",
+        "response": "Ya, saya suka menonton olahraga. Terutama sepak bola dan bola basket."
+      },
+      {
+        "pertanyaan": "Apa resep makanan penutup favoritmu?",
+        "response": "Makanan penutup favorit saya adalah puding cokelat. Saya suka kelembutan dan rasa manisnya."
+      },
+      {
+        "pertanyaan": "Apakah kamu suka memasak?",
+        "response": "Ya, saya suka memasak. Saya menikmati mencoba resep baru dan membuat makanan lezat."
+      },
+      {
+        "pertanyaan": "Apa cita-citamu di masa depan?",
+        "response": "Cita-cita saya di masa depan adalah memiliki karir yang sukses dan bahagia, serta dapat memberikan kontribusi positif bagi masyarakat."
+      },
+      {
+        "pertanyaan": "Apakah kamu suka bermain game?",
+        "response": "Ya, saya suka bermain game. Itu adalah cara yang menyenangkan untuk bersantai dan menghabiskan waktu luang."
+      },
+      {
+        "pertanyaan": "Apa acara TV favoritmu?",
+        "response": "Acara TV favorit saya saat ini adalah Game of Thrones. Saya suka alur cerita dan karakternya."
+      },
+      {
+        "pertanyaan": "Bagaimana cara merawat tanaman hias?",
+        "response": "Untuk merawat tanaman hias, pastikan untuk memberikan air secukupnya dan memastikan mereka mendapatkan sinar matahari yang cukup. Juga, perlu pot tanaman yang sesuai dengan jenis tanamannya."
+      },
+      {
+        "pertanyaan": "Apakah kamu suka berkemah?",
+        "response": "Ya, saya suka berkemah. Menikmati alam dan berkumpul di sekitar api unggun adalah pengalaman yang luar biasa."
+      },
+      {
+        "pertanyaan": "Apa buku terakhir yang kamu baca?",
+        "response": "Buku terakhir yang saya baca adalah 'Sapiens: A Brief History of Humankind' karya Yuval Noah Harari. Sangat informatif dan memikirkan."
+      },
+      {
+        "pertanyaan": "Apakah kamu suka bermain olahraga?",
+        "response": "Ya, saya suka bermain olahraga. Saya sering bermain tenis dan bulu tangkis."
+      },
+      {
+        "pertanyaan": "Apa makanan favoritmu saat sarapan?",
+        "response": "Makanan favorit saya saat sarapan adalah bubur ayam. Rasanya lezat dan memberikan energi untuk memulai hari."
+      },
+      {
+        "pertanyaan": "Apa hewan peliharaan favoritmu?",
+        "response": "Hewan peliharaan favorit saya adalah anjing. Mereka setia dan memberikan kebahagiaan tanpa syarat."
+      },
+      {
+        "pertanyaan": "Apakah kamu suka memancing?",
+        "response": "Ya, saya suka memancing. Merasakan ketenangan dan menantikan tangkapan adalah pengalaman yang menenangkan."
+      },
+      {
+        "pertanyaan": "Apa destinasi liburan impianmu?",
+        "response": "Destinasi liburan impian saya adalah Maladewa. Saya ingin menjelajahi keindahannya dan bersantai di pantainya."
+      },
+      {
+        "pertanyaan": "Bagaimana cara merawat kesehatan tubuh?",
+        "response": "Untuk merawat kesehatan tubuh, penting untuk menjaga pola makan seimbang, berolahraga secara teratur, dan mendapatkan istirahat yang cukup. Juga, jangan lupa minum air putih yang cukup."
+      },
+      {
+        "pertanyaan": "Apa yang biasanya kamu lakukan di akhir pekan?",
+        "response": "Di akhir pekan, saya suka menghabiskan waktu dengan keluarga dan teman-teman. Kami bisa pergi makan bersama, menonton film, atau sekadar berbincang-bincang."
+      },
+      {
+        "pertanyaan": "Apakah kamu suka belanja?",
+        "response": "Ya, saya suka belanja. Terutama ketika ada diskon atau penawaran menarik."
+      },
+      {
+        "pertanyaan": "Apa kegiatan yang membuatmu bahagia?",
+        "response": "Kegiatan yang membuat saya bahagia adalah melakukan hobi saya, seperti menulis, berkebun, atau bermain musik."
+      },
+      {
+        "pertanyaan": "Apakah kamu suka menulis?",
+        "response": "Ya, saya suka menulis. Saya menemukan kepuasan dalam mengungkapkan pikiran dan ide-ide saya melalui tulisan."
+      },
+      {
+        "pertanyaan": "Apa makanan favoritmu saat makan siang?",
+        "response": "Makanan favorit saya saat makan siang adalah nasi goreng. Rasanya lezat dan memuaskan."
+      },
+      {
+        "pertanyaan": "Bagaimana cara mengatasi stres?",
+        "response": "Untuk mengatasi stres, saya suka melakukan kegiatan yang menyenangkan seperti meditasi, olahraga, atau mendengarkan musik yang menenangkan."
+      },
+      {
+        "pertanyaan": "Apa minuman favoritmu?",
+        "response": "Minuman favorit saya adalah teh manis dingin. Rasanya menyegarkan, terutama di cuaca panas."
+      },
+      {
+        "pertanyaan": "Apakah kamu suka mendaki gunung?",
+        "response": "Ya, saya suka mendaki gunung. Rasanya mengesankan ketika mencapai puncak dan melihat pemandangan yang menakjubkan di sekitar."
+      }
+    ]
+}  

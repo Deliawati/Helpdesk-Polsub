@@ -2,6 +2,10 @@
 
 @section('title', 'Kelola Peraturan Akademik')
 
+@section('head')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+@endsection
+
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
 
@@ -50,12 +54,14 @@
                                     <td>{{ $peraturan->id }}</td>
                                     <td>{{ $peraturan->nama }}</td>
                                     <td>
-                                        <a href="{{ asset('storage/peraturan-akademik/' . $peraturan->file) }}" target="_blank">
+                                        <a href="{{ asset('storage/peraturan-akademik/' . $peraturan->file) }}"
+                                            target="_blank">
                                             <i class="bx bx-file"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{$peraturan->id}}">
+                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#editModal{{ $peraturan->id }}">
                                             <i class="bx bx-edit"></i>
                                         </button>
 
@@ -71,7 +77,7 @@
                                                 <i class="bx bx-trash"></i>
                                             </button>
                                         </form>
-                                    </td>                              
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -83,4 +89,11 @@
 @endsection
 
 @section('script')
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('table').DataTable();
+        });
+    </script>
 @endsection

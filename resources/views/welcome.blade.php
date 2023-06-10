@@ -59,7 +59,7 @@
             labels: ['Selesai', 'Belum Terjawab'],
             datasets: [{
                 label: 'Tiket Pertanyaan',
-                data: [20, 50],
+                data: [{{$tiket_dibalas}}, {{$tiket_belum_dibalas}}],
                 backgroundColor: [
                     '#37f713',
                     'rgb(255, 159, 64)',

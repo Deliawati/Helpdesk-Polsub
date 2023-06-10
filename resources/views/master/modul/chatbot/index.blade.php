@@ -2,6 +2,10 @@
 
 @section('title', 'Kelola Data Chatbot')
 
+@section('head')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+@endsection
+
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
 
@@ -27,33 +31,49 @@
             <div class="card-body">
                 <h5 class="d-flex justify-content-between align-items-center">
                     Data Chatbot
-                    <button class="btn btn-primary btn-sm">
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
                         <i class="bx bx-plus"></i>
                     </button>
                 </h5>
+
+                @include('master.modul.chatbot.createModal')
 
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">#ID</th>
+                                <th scope="col">Pertanyaan</th>
                                 <th scope="col">Response</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($chatbots as $chat)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Otto</td>
+                                <th scope="row">{{$chat->id}}</th>
+                                <td>{{$chat->pertanyaan}}</td>
+                                <td>{{$chat->jawaban}}</td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm">
+                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#editModal{{ $chat->id }}">
                                         <i class="bx bx-edit"></i>
                                     </button>
-                                    <button class="btn btn-danger btn-sm">
-                                        <i class="bx bx-trash"></i>
-                                    </button>
+
+                                    @include('master.modul.chatbot.editModal')
+
+                                    <form method="POST" action="{{ route('modul-chatbot.destroy', $chat->id) }}"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                            <i class="bx bx-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -63,4 +83,11 @@
 @endsection
 
 @section('script')
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('table').DataTable();
+    });
+</script>
 @endsection

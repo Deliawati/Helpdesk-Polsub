@@ -5,6 +5,7 @@
 @section('head')
     <script src="https://cdn.tiny.cloud/1/j5gqw60qypi9txea3m892uu1z4c38jvmw74cpvjetog9q3td/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 @endsection
 
 @section('content')
@@ -84,13 +85,18 @@
 @endsection
 
 @section('script')
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'link lists wordcount advlist',
-            toolbar: 'undo redo | blocks fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-            menubar: false,
-            forced_root_block: 'div'
+        $(document).ready(function() {
+            $('table').DataTable();
+            tinymce.init({
+                selector: 'textarea',
+                plugins: 'link lists wordcount advlist',
+                toolbar: 'undo redo | blocks fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                menubar: false,
+                forced_root_block: 'div'
+            });
         });
     </script>
 @endsection

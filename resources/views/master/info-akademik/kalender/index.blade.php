@@ -2,6 +2,10 @@
 
 @section('title', 'Kelola Kalender Akademik')
 
+@section('head')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+@endsection
+
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
 
@@ -83,4 +87,11 @@
 @endsection
 
 @section('script')
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('table').DataTable();
+    });
+</script>
 @endsection
