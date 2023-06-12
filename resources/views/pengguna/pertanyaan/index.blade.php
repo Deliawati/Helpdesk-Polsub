@@ -97,39 +97,42 @@
                         </div>
                     </div>
 
-                    <div class="mt-3">
-                        <h5 class="text-center">Daftar Tiket Pertanyaan Saya</h5>
+                    @guest
+                    @else
+                        <div class="mt-3">
+                            <h5 class="text-center">Daftar Tiket Pertanyaan Saya</h5>
 
-                        <div id="accordion-riwayat">
-                            @foreach ($my_tickets as $tiket)
-                                <div class="card">
-                                    <div class="card-header {{ $tiket->balasan ? 'bg-success' : 'bg-warning' }}"
-                                        id="myasks{{ $tiket->id }}">
-                                        <h5 class="mb-0">
-                                            <button class="btn btn-link {{ $tiket->balasan ? 'text-white' : '' }} collapsed" data-toggle="collapse"
-                                                data-target="#collapse-riwayat{{ $tiket->id }}" aria-expanded="false"
-                                                aria-controls="collapse-riwayat{{ $tiket->id }}">
-                                                <span class="badge badge-light">
-                                                    {{ $tiket->kategori }}
-                                                </span>
-                                                {{ '#' . $tiket->id . ' ' . $tiket->pertanyaan }}
-                                            </button>
-                                        </h5>
-                                    </div>
-                                    <div id="collapse-riwayat{{ $tiket->id }}" class="collapse"
-                                        aria-labelledby="myasks{{ $tiket->id }}" data-parent="#accordion-riwayat">
-                                        <div class="card-body">
-                                            @if ($tiket->balasan)
-                                                {!! $tiket->balasan !!}
-                                            @else
-                                                <p class="text-center">Belum ada jawaban</p>
-                                            @endif
+                            <div id="accordion-riwayat">
+                                @foreach ($my_tickets as $tiket)
+                                    <div class="card">
+                                        <div class="card-header {{ $tiket->balasan ? 'bg-success' : 'bg-warning' }}"
+                                            id="myasks{{ $tiket->id }}">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link {{ $tiket->balasan ? 'text-white' : '' }} collapsed" data-toggle="collapse"
+                                                    data-target="#collapse-riwayat{{ $tiket->id }}" aria-expanded="false"
+                                                    aria-controls="collapse-riwayat{{ $tiket->id }}">
+                                                    <span class="badge badge-light">
+                                                        {{ $tiket->kategori }}
+                                                    </span>
+                                                    {{ '#' . $tiket->id . ' ' . $tiket->pertanyaan }}
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapse-riwayat{{ $tiket->id }}" class="collapse"
+                                            aria-labelledby="myasks{{ $tiket->id }}" data-parent="#accordion-riwayat">
+                                            <div class="card-body">
+                                                @if ($tiket->balasan)
+                                                    {!! $tiket->balasan !!}
+                                                @else
+                                                    <p class="text-center">Belum ada jawaban</p>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
+                    @endguest
                 </div>
             </div>
         </div>
