@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Pertanyaan dan FAQ')
+@section('title', 'Pertanyaan')
 
 @section('head')
 @endsection
@@ -9,32 +9,7 @@
     <section class="our-services">
         <div class="container pt-5">
             <div class="row">
-                <div class="col-md-6 mb-3">
-                    <h5>FAQ</h5>
-
-                    <div id="accordion-faq">
-                        @foreach ($faqs as $faq)
-                            <div class="card">
-                                <div class="card-header" id="heading{{ $faq->id }}">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed" data-toggle="collapse"
-                                            data-target="#collapse-faq{{ $faq->id }}" aria-expanded="false"
-                                            aria-controls="collapse-faq{{ $faq->id }}">
-                                            {{ $faq->pertanyaan }}
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="collapse-faq{{ $faq->id }}" class="collapse"
-                                    aria-labelledby="heading{{ $faq->id }}" data-parent="#accordion-faq">
-                                    <div class="card-body">
-                                        {!! $faq->jawaban !!}
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <h5 class="text-center">
                         Form Tiket Pertanyaan
                     </h5>
@@ -64,7 +39,6 @@
 
                     <div class="card">
                         <div class="card-body">
-
                             @guest
                                 <div>
                                     <p class="text-center">Silahkan <a href="{{ route('login') }}">login</a> untuk mengajukan
@@ -79,8 +53,9 @@
                                         <div class="mb-3">
                                             <label for="kategori">Kategori</label>
                                             <select class="form-control" id="kategori" name="kategori">
-                                                @foreach($kategoris as $kategori)
-                                                    <option value="{{ $kategori }}" class="text-capitalize">{{ $kategori }}</option>
+                                                @foreach ($kategoris as $kategori)
+                                                    <option value="{{ $kategori }}" class="text-capitalize">
+                                                        {{ $kategori }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -108,9 +83,9 @@
                                         <div class="card-header {{ $tiket->balasan ? 'bg-success' : 'bg-warning' }}"
                                             id="myasks{{ $tiket->id }}">
                                             <h5 class="mb-0">
-                                                <button class="btn btn-link {{ $tiket->balasan ? 'text-white' : '' }} collapsed" data-toggle="collapse"
-                                                    data-target="#collapse-riwayat{{ $tiket->id }}" aria-expanded="false"
-                                                    aria-controls="collapse-riwayat{{ $tiket->id }}">
+                                                <button class="btn btn-link {{ $tiket->balasan ? 'text-white' : '' }} collapsed"
+                                                    data-toggle="collapse" data-target="#collapse-riwayat{{ $tiket->id }}"
+                                                    aria-expanded="false" aria-controls="collapse-riwayat{{ $tiket->id }}">
                                                     <span class="badge badge-light">
                                                         {{ $tiket->kategori }}
                                                     </span>

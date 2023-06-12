@@ -37,4 +37,10 @@ class PertanyaanController extends Controller
 
         return redirect()->route('pertanyaan')->with('success', 'Tiket dengan id:'.$tiket->id.' pertanyaan berhasil dikirim');
     }
+
+    public function faq()
+    {
+        $data['faqs'] = Faq::all();
+        return view('pengguna.pertanyaan.faq', $data);
+    }
 }

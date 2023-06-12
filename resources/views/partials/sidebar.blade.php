@@ -70,11 +70,13 @@
                 </li>
             </ul>
         </li>
-        {{-- <li class="menu-item">
-            <a href="{{route('master-users.index')}}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-group"></i>
-                <div data-i18n="Basic">Users</div>
-            </a>           
-        </li> --}}
+        @if(Auth::user()->role == 'superadmin')
+            <li class="menu-item">
+                <a href="{{route('master-users.index')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-group"></i>
+                    <div data-i18n="Basic">Users</div>
+                </a>           
+            </li>
+        @endif
     </ul>
 </aside>

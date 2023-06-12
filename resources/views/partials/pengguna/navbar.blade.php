@@ -18,15 +18,18 @@
                 </li>
                 <li class="nav-item">
                     <div class="dropdown">
-                        <a id="dropdownMenuButton" class="nav-link dropdown-toggle" href="javascript:;"
-                            data-toggle="dropdown" aria-expanded="false">Info</a>
+                        <button id="dropdownMenuLink" class="btn btn-transparent nav-link dropdown-toggle" href="#"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</button>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="{{ route('kalender-akademik') }}">Kalender Akademik</a>
                             <a class="dropdown-item" href="{{ route('layanan-akademik') }}">Layanan Akademik</a>
                             <a class="dropdown-item" href="{{ route('peraturan-akademik') }}">Peraturan Akademik</a>
                         </div>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('pertanyaan') }}">Pertanyaan</a>

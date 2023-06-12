@@ -14,7 +14,12 @@ class UserController extends Controller
     public function index()
     {
         //get all users except login user
-        $data['users'] = User::where('id', '!=', auth()->user()->id)->get();
+        if(auth()->user()->role == 'superadmin'){
+            $data['users'] = User::where('id', '!=', auth()->user()->id)->get();
+        }else{
+            $data['users'] = User::where('id', '!=', auth()->user()->id)->where('role', '!=', 'superadmin')->get();
+        }
+        $data['roles'] = ['admin1', 'admin2', 'admin3', 'user'];
         return view('master.user.index', $data);
     }
 

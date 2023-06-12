@@ -22,18 +22,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="role" class="form-label">Role</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="role1" value="admin">
-                            <label class="form-check-label" for="role1">
-                                Admin
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="role" id="role2" value="user">
-                            <label class="form-check-label" for="role2">
-                                User (Pengguna)
-                            </label>
-                        </div>
+                        <select class="form-control" id="role" name="role">
+                            @foreach ($roles as $role)
+                                <option value="{{ $role }}" class="text-capitalize">{{ $role }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">

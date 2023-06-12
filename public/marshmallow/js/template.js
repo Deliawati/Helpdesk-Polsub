@@ -25,7 +25,7 @@
 			$('body').addClass("sidebar-overlay");
 		});
 		$("#mobile-menu-overlay, .close-menu, .nav-link").click(function() {
-			$('.collapse').toggleClass('show');
+			// $('.collapse').toggleClass('show');
 			$('body').removeClass("sidebar-overlay");
 		});
 

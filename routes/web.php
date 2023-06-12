@@ -39,6 +39,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::get('/chatbot', [App\Http\Controllers\Pengguna\ChatbotController::class, 'index'])->name('chatbot');
 
+Route::get('/faq', [App\Http\Controllers\Pengguna\PertanyaanController::class, 'faq'])->name('faq');
 Route::get('/pertanyaan', [App\Http\Controllers\Pengguna\PertanyaanController::class, 'index'])->name('pertanyaan');
 Route::post('/pertanyaan', [App\Http\Controllers\Pengguna\PertanyaanController::class, 'store'])
     ->middleware('auth')
