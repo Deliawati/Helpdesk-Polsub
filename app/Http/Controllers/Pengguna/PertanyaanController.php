@@ -13,7 +13,10 @@ class PertanyaanController extends Controller
     public function index()
     {
         $data['faqs'] = Faq::all();
-        $data['my_tickets'] = Tiket::where('user_id', auth()->user()->id)->get();
+        // if authentificated user
+        if (auth()->user()) {
+            $data['my_tickets'] = Tiket::where('user_id', auth()->user()->id)->get();
+        }
         $data['kategoris'] = ['UKT', 'beasiswa', 'kelulusan', 'PMB', 'perkuliahan', 'surat menyurat'];
 
         return view('pengguna.pertanyaan.index', $data);
