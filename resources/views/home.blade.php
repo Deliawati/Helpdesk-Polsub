@@ -153,7 +153,11 @@
                                     color: axisColor,
                                     label: 'Selesai',
                                     formatter: function(w) {
+                                        @if($tiket_dibalas+$tiket_belum_dibalas!=0)
                                         return '{{round(($tiket_dibalas/($tiket_dibalas+$tiket_belum_dibalas))*100)}}%';
+                                        @else
+                                        return '0%';
+                                        @endif
                                     }
                                 }
                             }
