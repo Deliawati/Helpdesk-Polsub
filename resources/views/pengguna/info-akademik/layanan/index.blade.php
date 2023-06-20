@@ -17,7 +17,6 @@
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Layanan</th>
-                            <th scope="col">Melalui</th>
                             <th scope="col">Konfirmasi</th>
                         </tr>
                     </thead>
@@ -26,19 +25,6 @@
                             <tr>
                                 <th scope="row">{{ $loop->index+1 }}</th>
                                 <td>{!! $layanan->nama !!}</td>
-                                <td class="melalui">
-                                    <ul>
-                                        @foreach (explode(';', $layanan->melalui) as $melalui)
-                                            <li>
-                                                @if (filter_var($melalui, FILTER_VALIDATE_URL))
-                                                    <a href="{{ $melalui }}" target="_blank">{{ $melalui }}</a>
-                                                @else
-                                                    {{ $melalui }}
-                                                @endif
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </td>
                                 <td>
                                     <ul>
                                         @foreach (explode(';', $layanan->konfirmasi) as $konfirmasi)

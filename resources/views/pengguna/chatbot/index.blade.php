@@ -4,6 +4,13 @@
 
 @section('head')
     <style>
+        #wrap-chat {
+            height: 450px;
+            max-height: 450px;
+            overflow-y: scroll;
+            padding: 5px;
+        }
+
         .message {
             margin-bottom: 20px;
             padding: 10px;
@@ -18,7 +25,7 @@
 
         .bot-message {
             background-color: #f0f0f0;
-            max-width: 45%;            
+            max-width: 45%;
         }
 
         .message-bot-icon {
@@ -32,7 +39,7 @@
         }
 
         .message-time {
-            /* float: right; */            
+            /* float: right; */
             font-size: 0.8em;
             color: #888;
         }
@@ -73,11 +80,12 @@
                         <div class="message bot-message">
                             <span class="message-bot-icon"><i class="mdi mdi-robot"></i></span>
                             <p>Selamat datang di Chatbot kami!</p>
-                            <div class="message-time text-right">{{\Carbon\Carbon::now()->format('h:i A')}}</div>
+                            <div class="message-time text-right">{{ \Carbon\Carbon::now()->format('h:i A') }}</div>
                         </div>
                     </div>
                     <div class="input-container">
-                        <input type="text" class="form-control input-box" id="user-input" name="pertanyaan" placeholder="Ketik pesan...">
+                        <input type="text" class="form-control input-box" id="user-input" name="pertanyaan"
+                            placeholder="Ketik pesan...">
                         <button class="send-button" onclick="sendMessage()">Kirim</button>
                     </div>
                 </div>
@@ -110,20 +118,22 @@
 
             // Lakukan proses pemrosesan pesan di sini, misalnya dengan mengirim permintaan ke backend atau memproses dengan JavaScript.
             $.ajax({
-                url: "{{route('pengguna.chatbot.process')}}",
+                url: "{{ route('pengguna.chatbot.process') }}",
                 type: "POST",
                 data: {
                     _token: "{{ csrf_token() }}",
                     pertanyaan: userInput
                 },
-                success: function (response) {
+                success: function(response) {
                     var botMessage =
                         '<div class="message bot-message"><span class="message-bot-icon"><i class="mdi mdi-robot"></i></span><p>' +
-                        response.data.jawaban + '</p><div class="message-time">' + getCurrentTime() + '</div></div>';
+                        response.data.jawaban + '</p><div class="message-time">' + getCurrentTime() +
+                        '</div></div>';
                     chatContainer.innerHTML += botMessage;
                     document.getElementById('user-input').value = '';
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
                 },
-                error: function (xhr) {
+                error: function(xhr) {
                     console.log(xhr.responseText);
                 }
             });

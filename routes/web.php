@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -42,7 +42,7 @@ Route::get('/chatbot', [App\Http\Controllers\Pengguna\ChatbotController::class, 
 Route::get('/faq', [App\Http\Controllers\Pengguna\PertanyaanController::class, 'faq'])->name('faq');
 Route::get('/pertanyaan', [App\Http\Controllers\Pengguna\PertanyaanController::class, 'index'])->name('pertanyaan');
 Route::post('/pertanyaan', [App\Http\Controllers\Pengguna\PertanyaanController::class, 'store'])
-    ->middleware('auth')
+    ->middleware(['auth', 'verified'])
     ->name('pertanyaan.store');
 
 Route::get('/kalender-akademik', [App\Http\Controllers\Pengguna\KalenderAkademikController::class, 'index'])->name('kalender-akademik');

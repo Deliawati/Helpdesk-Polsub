@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Master;
 use App\Http\Controllers\Controller;
 use App\Models\Tiket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class TiketController extends Controller
 {
@@ -80,6 +81,9 @@ class TiketController extends Controller
         $tiket->update([
             'balasan' => $request->balasan,           
         ]);
+
+        // send email
+        Mail::to($tiket->user->email)->send(new \App\Mail\Tiket($tiket));
 
         return redirect()->route('modul-tiket.index')->with('success', 'Tiket berhasil diupdate');
     }

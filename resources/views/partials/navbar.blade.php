@@ -10,7 +10,7 @@
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
-                <h5 class="mb-0">Selamat Datang, {{Auth::user()->name}}!</h5>
+                <h5 class="mb-0" title="{{Auth::user()->role}}">Selamat Datang Admin Layanan Akademik!</h5>
             </div>
         </div>
         <!-- /Search -->

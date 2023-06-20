@@ -34,7 +34,7 @@ class LayananController extends Controller
         //
         $request->validate([
             'nama' => 'required',
-            'melalui' => 'required',
+            // 'melalui' => 'required',
             'konfirmasi' => 'required',
         ]);
 
@@ -67,7 +67,7 @@ class LayananController extends Controller
         //
         $request->validate([
             'nama' => 'required',
-            'melalui' => 'required',
+            // 'melalui' => 'required',
             'konfirmasi' => 'required',
         ]);
 

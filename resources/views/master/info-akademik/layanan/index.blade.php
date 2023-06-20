@@ -46,7 +46,7 @@
                             <tr>
                                 <th scope="col">#ID</th>
                                 <th scope="col">Layanan</th>
-                                <th scope="col">Melalui</th>
+                                {{-- <th scope="col">Melalui</th> --}}
                                 <th scope="col">Konfirmasi</th>
                                 <th scope="col">Aksi</th>
                             </tr>
@@ -56,7 +56,7 @@
                                 <tr>
                                     <th scope="row">{{ $layanan->id }}</th>
                                     <td>{!! $layanan->nama !!}</td>
-                                    <td class="melalui">
+                                    {{-- <td class="melalui">
                                         <ul>
                                             @foreach (explode(';', $layanan->melalui) as $melalui)
                                                 <li>
@@ -69,7 +69,7 @@
                                                 </li>
                                             @endforeach
                                         </ul>
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         <ul>
                                             @foreach (explode(';', $layanan->konfirmasi) as $konfirmasi)

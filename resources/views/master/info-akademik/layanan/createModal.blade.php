@@ -12,11 +12,11 @@
                         <label for="nama" class="form-label">Layanan</label>
                         <textarea class="form-control" id="nama" name="nama" rows="3"></textarea>                        
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="melalui" class="form-label">Melalui</label>
                         <input type="text" class="form-control" id="melalui" name="melalui">
                         <div class="form-text">Pisahkan dengan ';' untuk bisa melalui banyak kontak yang bisa dihubungi</div>
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <label for="konfirmasi" class="form-label">Konfimasi</label>
                         <input type="text" class="form-control" id="konfirmasi" name="konfirmasi">

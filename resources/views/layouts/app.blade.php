@@ -33,6 +33,11 @@
             width: 70px !important;
         }
 
+        .footer{
+            background: #19a7cd  url({{ asset('marshmallow/images/footer_bg.svg') }}) no-repeat center;
+            background-size: cover;
+        }
+
         @media screen and (max-width: 768px) {
             .logo {
                 width: 37px !important;

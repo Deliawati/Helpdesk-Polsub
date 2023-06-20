@@ -126,11 +126,12 @@
                         </div>
                     @enderror
                 </div>
-                <div class="mb-3">
+                <div class="d-flex justify-content-between mb-3">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="remember-me" />
                     <label class="form-check-label" for="remember-me"> Remember Me </label>
                   </div>
+                  <a href="{{route('password.request')}}" class="float-end">Forgot Password</a>
                 </div>
                 <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="submit">Login</button>

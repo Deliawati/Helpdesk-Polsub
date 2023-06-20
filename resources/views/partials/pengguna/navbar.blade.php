@@ -18,8 +18,9 @@
                 </li>
                 <li class="nav-item">
                     <div class="dropdown">
-                        <button id="dropdownMenuLink" class="btn btn-transparent nav-link dropdown-toggle" href="#"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</button>
+                        <button id="dropdownMenuLink" class="btn btn-transparent nav-link dropdown-toggle"
+                            href="#" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Info</button>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="{{ route('kalender-akademik') }}">Kalender Akademik</a>
@@ -29,10 +30,16 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('pertanyaan') }}">Pertanyaan</a>
+                    <div class="dropdown">
+                        <button id="dropdownMenuLink" class="btn btn-transparent nav-link dropdown-toggle"
+                            href="#" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Pertanyaan</button>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="{{ route('faq') }}">FAQ</a>
+                            <a class="dropdown-item" href="{{ route('pertanyaan') }}">Tiket</a>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('chatbot') }}">Chatbot</a>

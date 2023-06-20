@@ -11,9 +11,9 @@ class KalenderAkademikController extends Controller
     //
     public function index()
     {
-        // get all data from KalenderAkademik model where tahun_ajaran is now
-        // or if not exists, get the latest data
-        $data['kalender'] = KalenderAkademik::where('tahun_ajaran', date('Y'))->first() ?? KalenderAkademik::latest()->first();
+        // get kalender dengan tahun_ajaran is 3 tahun terakhir
+        $data['kalenders'] = KalenderAkademik::orderBy('tahun_ajaran', 'desc')->take(3)->get();
+
         return view('pengguna.info-akademik.kalender.index', $data);
     }
 }

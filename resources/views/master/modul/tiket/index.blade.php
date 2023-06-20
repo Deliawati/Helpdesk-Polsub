@@ -51,34 +51,44 @@
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Pertanyaan</th>
                                 <th scope="col">Balasan</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Dibuat</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($tikets as $tiket)
-                            <tr>
-                                <th scope="row">{{$tiket->id}}</th>
-                                <td>{{$tiket->user->email}}</td>
-                                <td>{{$tiket->kategori}}</td>
-                                <td>
-                                    <div class="max-3-line">
-                                        {{$tiket->pertanyaan}}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="max-3-line">
-                                        {{$tiket->balasan}}
-                                    </div>
-                                </td>
-                                <td>
-                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#balasModal{{ $tiket->id }}">
-                                        <i class="bx bx-info-circle"></i>
-                                    </button>
+                            @foreach ($tikets as $tiket)
+                                <tr>
+                                    <th scope="row">{{ $tiket->id }}</th>
+                                    <td>{{ $tiket->user->email }}</td>
+                                    <td>{{ $tiket->kategori }}</td>
+                                    <td>
+                                        <div class="max-3-line">
+                                            {{ $tiket->pertanyaan }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="max-3-line">
+                                            {{ $tiket->balasan }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @if ($tiket->balasan)
+                                            <span class="badge bg-success">Dibalas</span>
+                                        @else
+                                            <span class="badge bg-warning">Pending</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $tiket->created_at }}</td>
+                                    <td>
+                                        <button class="btn btn-info btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#balasModal{{ $tiket->id }}">
+                                            <i class="bx bx-info-circle"></i>
+                                        </button>
 
-                                    @include('master.modul.tiket.balasModal')
-                                </td>
-                            </tr>
+                                        @include('master.modul.tiket.balasModal')
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -89,11 +99,16 @@
 @endsection
 
 @section('script')
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('table').DataTable();
-    });
-</script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('table').DataTable({
+                order: [
+                    [5, 'desc'],
+                    [0, 'asc']
+                ],
+            });
+        });
+    </script>
 @endsection

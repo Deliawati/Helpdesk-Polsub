@@ -3,7 +3,17 @@
 @section('title', 'Kelola Data Chatbot')
 
 @section('head')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <script src="https://cdn.tiny.cloud/1/j5gqw60qypi9txea3m892uu1z4c38jvmw74cpvjetog9q3td/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <style>
+        .wrap-2-lines {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -49,33 +59,40 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($chatbots as $chat)
-                            <tr>
-                                <th scope="row">{{$chat->id}}</th>
-                                <td>{{$chat->pertanyaan}}</td>
-                                <td>{{$chat->jawaban}}</td>
-                                <td>
-                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#editModal{{ $chat->id }}">
-                                        <i class="bx bx-edit"></i>
-                                    </button>
+                            @foreach ($chatbots as $chat)
+                                <tr>
+                                    <th scope="row">{{ $chat->id }}</th>
+                                    <td>{{ $chat->pertanyaan }}</td>
+                                    <td>
+                                        <div class="wrap-2-lines">
+                                            {!! $chat->jawaban !!}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#editModal{{ $chat->id }}">
+                                            <i class="bx bx-edit"></i>
+                                        </button>                                        
 
-                                    @include('master.modul.chatbot.editModal')
-
-                                    <form method="POST" action="{{ route('modul-chatbot.destroy', $chat->id) }}"
-                                        class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-sm"
-                                            onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
-                                            <i class="bx bx-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
+                                        <form method="POST" action="{{ route('modul-chatbot.destroy', $chat->id) }}"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                                <i class="bx bx-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
+
+                    @foreach ($chatbots as $chat)
+                        @include('master.modul.chatbot.editModal')
+                    @endforeach
+                    
                 </div>
             </div>
         </div>
@@ -83,11 +100,17 @@
 @endsection
 
 @section('script')
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('table').DataTable();
-    });
-</script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('table').DataTable();
+            tinymce.init({
+                selector: 'textarea',
+                plugins: 'link lists wordcount advlist',
+                toolbar: 'undo redo | blocks fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                menubar: false
+            });
+        });
+    </script>
 @endsection

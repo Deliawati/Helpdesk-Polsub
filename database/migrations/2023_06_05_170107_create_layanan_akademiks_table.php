@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('layanan_akademiks', function (Blueprint $table) {
             $table->id();
             $table->text('nama');
-            $table->string('melalui');
+            // $table->string('melalui');
             $table->string('konfirmasi');
             $table->timestamps();
         });

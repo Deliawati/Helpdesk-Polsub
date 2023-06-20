@@ -11,7 +11,7 @@ class LayananAkademik extends Model
 
     protected $fillable = [
         'nama',
-        'melalui',
+        // 'melalui',
         'konfirmasi',
     ];
 }
