@@ -16,6 +16,17 @@
                         <label for="jawaban" class="form-label">Jawaban</label>
                         <textarea class="form-control" id="jawaban" name="jawaban"></textarea>
                     </div>
+                    <div class="mb-3">
+                        <label for="kategori" class="form-label">Kategori</label>
+                        <select class="form-select" id="kategori" name="kategori" required>
+                            <option value="UKT">UKT</option>
+                            <option value="beasiswa">Beasiswa</option>
+                            <option value="kelulusan">Kelulusan</option>
+                            <option value="PMB">PMB</option>
+                            <option value="perkuliahan">Perkuliahan</option>
+                            <option value="surat menyurat">Surat Menyurat</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

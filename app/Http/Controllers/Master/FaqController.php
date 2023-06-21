@@ -35,6 +35,7 @@ class FaqController extends Controller
         $request->validate([
             'pertanyaan' => 'required',
             'jawaban' => 'required',
+            'kategori' => 'required',
         ]);
 
         Faq::create($request->all());
@@ -67,6 +68,7 @@ class FaqController extends Controller
         $request->validate([
             'pertanyaan' => 'required',
             'jawaban' => 'required',
+            'kategori' => 'required',
         ]);
 
         Faq::find($id)->update($request->all());

@@ -47,6 +47,7 @@
                                 <th scope="col">#ID</th>
                                 <th scope="col">Pertanyaan</th>
                                 <th scope="col">Jawaban</th>
+                                <th scope="col">Kategori</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -56,6 +57,7 @@
                                     <th scope="row">{{ $faq->id }}</th>
                                     <td>{{ $faq->pertanyaan }}</td>
                                     <td>{!! $faq->jawaban !!}</td>
+                                    <td>{{ $faq->kategori }}</td>
                                     <td>
                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#editModal{{ $faq->id }}">

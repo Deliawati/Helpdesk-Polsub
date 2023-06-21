@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('pertanyaan');
             $table->text('jawaban');
+            $table->enum('kategori', ['UKT', 'beasiswa', 'kelulusan', 'PMB', 'perkuliahan', 'surat menyurat'])->default('UKT');
             $table->timestamps();
         });
     }
