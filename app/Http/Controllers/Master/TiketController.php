@@ -14,24 +14,15 @@ class TiketController extends Controller
      */
     public function index()
     {
-        //
-        switch (auth()->user()->role) {
-            case 'admin1':
-                // get data tiket dengan kategori 'UKT', 'beasiswa', 'kelulusan'
-                $data['tikets'] = Tiket::whereIn('kategori', ['UKT', 'beasiswa', 'kelulusan'])->get();
-                break;
-            case 'admin2':
-                // get data tiket dengan kategori 'PMB', 'perkuliahan'
-                $data['tikets'] = Tiket::whereIn('kategori', ['PMB', 'perkuliahan'])->get();
-                break;
-            case 'admin3':
-                // get data tiket dengan kategori 'surat menyurat'
-                $data['tikets'] = Tiket::where('kategori', 'surat menyurat')->get();
-                break;
-            default:
-                $data['tikets'] = Tiket::all();
-                break;
+        // 
+        if(auth()->user()->role == 'superadmin'){
+            $data['tikets'] = Tiket::all();
+        }else{
+            // get permissions
+            $permissions = auth()->user()->permissions->pluck('name')->toArray();
+            $data['tikets'] = Tiket::whereIn('kategori', $permissions)->get();
         }
+        
         return view('master.modul.tiket.index', $data);
     }
 

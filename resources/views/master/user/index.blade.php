@@ -48,6 +48,7 @@
                                 <th scope="col">Nama</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Role</th>
+                                <th scope="col">Permission</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -58,6 +59,11 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->role }}</td>
+                                    <td>
+                                        @foreach ($user->permissions as $permission)
+                                            <span class="badge bg-info">{{ $permission->name }}</span>
+                                        @endforeach
+                                    </td>
                                     <td>
                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#editModal{{ $user->id }}">

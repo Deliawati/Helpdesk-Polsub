@@ -50,4 +50,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Tiket::class);
     }
+
+    public function permissions()
+    {
+        return $this->hasMany(UserPermission::class);
+    }
+
+    public function hasPermissionTo($permission)
+    {
+        return $this->permissions()->where('name', $permission)->exists();
+    }    
 }

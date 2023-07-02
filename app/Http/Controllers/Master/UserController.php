@@ -24,7 +24,7 @@ class UserController extends Controller
                 ->where('role', '!=', 'user')
                 ->get();
         }
-        $data['roles'] = ['admin1', 'admin2', 'admin3'];
+        $data['permissions'] = ['UKT', 'beasiswa', 'kelulusan', 'PMB', 'perkuliahan', 'surat menyurat'];
         return view('master.user.index', $data);
     }
 
@@ -45,16 +45,22 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255|unique:users',
-            'role' => 'required|string|max:255',
             'password' => 'required|string',
+            'permissions' => 'nullable|array',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'role' => strtolower($request->role),
-            'password' => bcrypt($request->password),
+            'role' => 'admin',
+            'password' => bcrypt($request->password),            
         ]);
+
+        foreach($request->permissions as $permission){
+            $user->permissions()->create([
+                'name' => $permission,
+            ]);
+        }
 
         return redirect()->route('master-users.index')->with('success', 'User berhasil ditambahkan');
     }
@@ -84,20 +90,29 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255|unique:users,email,' . $id,
-            'role' => 'required|string|max:255',
+            'permissions' => 'nullable|array',
         ]);
 
         $user = User::findOrFail($id);
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'role' => strtolower($request->role),
         ]);
 
         // if password is not empty, update password
         if (!empty($request->password)) {
             $user->update([
                 'password' => bcrypt($request->password),
+            ]);
+        }
+
+        // delete all permissions
+        $user->permissions()->delete();
+
+        // add new permissions
+        foreach($request->permissions as $permission){
+            $user->permissions()->create([
+                'name' => $permission,
             ]);
         }
 

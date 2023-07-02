@@ -21,10 +21,10 @@
                         <input type="password" class="form-control" id="password" name="password">
                     </div>
                     <div class="mb-3">
-                        <label for="role" class="form-label">Role</label>
-                        <select class="form-control" id="role" name="role">
-                            @foreach ($roles as $role)
-                                <option value="{{ $role }}" class="text-capitalize">{{ $role }}</option>
+                        <label for="permissions" class="form-label">Hak Akses Pelayanan</label>
+                        <select class="form-control" id="permissions" name="permissions[]" multiple>
+                            @foreach ($permissions as $permission)
+                                <option value="{{ $permission }}" class="text-capitalize">{{ $permission }}</option>
                             @endforeach
                         </select>
                     </div>
