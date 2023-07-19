@@ -41,15 +41,17 @@ class FaqController extends Controller
 
         $faq = Faq::create($request->all());
 
-        foreach ($request->attachment as $file) {
-            $file = $file->store('public/faq');
-            // trim public/faq/ from $file
-            $file = substr($file, 11);
-            File::create([
-                'parent_id' => $faq->id,
-                'nama' => $file,
-                'jenis' => 'faq',
-            ]);
+        if ($request->hasFile('attachment')) {
+            foreach ($request->attachment as $file) {
+                $file = $file->store('public/faq');
+                // trim public/faq/ from $file
+                $file = substr($file, 11);
+                File::create([
+                    'parent_id' => $faq->id,
+                    'nama' => $file,
+                    'jenis' => 'faq',
+                ]);
+            }
         }
 
         return redirect()->route('modul-faq.index')->with('success', 'FAQ berhasil ditambahkan');
@@ -85,15 +87,17 @@ class FaqController extends Controller
 
         $faq = Faq::find($id)->update($request->all());
 
-        foreach ($request->attachment as $file) {
-            $file = $file->store('public/faq');
-            // trim public/faq/ from $file
-            $file = substr($file, 11);
-            File::create([
-                'parent_id' => $id,
-                'nama' => $file,
-                'jenis' => 'faq',
-            ]);
+        if ($request->hasFile('attachment')) {
+            foreach ($request->attachment as $file) {
+                $file = $file->store('public/faq');
+                // trim public/faq/ from $file
+                $file = substr($file, 11);
+                File::create([
+                    'parent_id' => $id,
+                    'nama' => $file,
+                    'jenis' => 'faq',
+                ]);
+            }
         }
 
         return redirect()->route('modul-faq.index')->with('success', 'FAQ berhasil diubah');

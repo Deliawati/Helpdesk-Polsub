@@ -43,15 +43,17 @@ class ChatbotController extends Controller
             'jawaban' => $request->jawaban,
         ]);
 
-        foreach ($request->attachment as $file) {
-            $file = $file->store('public/chatbot');
-            // trim public/chatbot/ from $file
-            $file = substr($file, 15);
-            File::create([
-                'parent_id' => $chatbot->id,
-                'nama' => $file,
-                'jenis' => 'chatbot',
-            ]);
+        if ($request->hasFile('attachment')) {
+            foreach ($request->attachment as $file) {
+                $file = $file->store('public/chatbot');
+                // trim public/chatbot/ from $file
+                $file = substr($file, 15);
+                File::create([
+                    'parent_id' => $chatbot->id,
+                    'nama' => $file,
+                    'jenis' => 'chatbot',
+                ]);
+            }
         }
 
         return redirect()->route('modul-chatbot.index')->with('success', 'Data berhasil ditambahkan');
@@ -89,15 +91,17 @@ class ChatbotController extends Controller
             'jawaban' => $request->jawaban,
         ]);
 
-        foreach ($request->attachment as $file) {            
-            $file = $file->store('public/chatbot');
-            // trim public/chatbot/ from $file
-            $file = substr($file, 15);
-            File::create([
-                'parent_id' => $id,
-                'nama' => $file,
-                'jenis' => 'chatbot',
-            ]);
+        if ($request->hasFile('attachment')) {
+            foreach ($request->attachment as $file) {
+                $file = $file->store('public/chatbot');
+                // trim public/chatbot/ from $file
+                $file = substr($file, 15);
+                File::create([
+                    'parent_id' => $id,
+                    'nama' => $file,
+                    'jenis' => 'chatbot',
+                ]);
+            }
         }
 
         return redirect()->route('modul-chatbot.index')->with('success', 'Data berhasil diubah');
