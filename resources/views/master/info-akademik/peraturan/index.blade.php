@@ -42,7 +42,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#ID</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Peraturan</th>
                                 <th scope="col">File</th>
                                 <th scope="col">Aksi</th>
@@ -51,7 +51,7 @@
                         <tbody>
                             @foreach ($peraturans as $peraturan)
                                 <tr>
-                                    <td>{{ $peraturan->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $peraturan->nama }}</td>
                                     <td>
                                         <a href="{{ asset('storage/peraturan-akademik/' . $peraturan->file) }}"

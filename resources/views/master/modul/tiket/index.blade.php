@@ -60,7 +60,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#ID</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Penanya</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Pertanyaan</th>
@@ -73,7 +73,7 @@
                         <tbody>
                             @foreach ($tikets as $tiket)
                                 <tr>
-                                    <th scope="row">{{ $tiket->id }}</th>
+                                    <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $tiket->user->email }}</td>
                                     <td>{{ $tiket->kategori }}</td>
                                     <td>

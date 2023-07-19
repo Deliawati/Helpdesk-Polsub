@@ -42,7 +42,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#ID</th>
+                                <th scope="col">No</th>
                                 <th scope="col">File</th>
                                 <th scope="col">Tahun Ajaran</th>
                                 <th scope="col">Aksi</th>
@@ -51,7 +51,7 @@
                         <tbody>
                             @foreach ($kalenders as $kalender)
                                 <tr>
-                                    <td>{{ $kalender->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>
                                         <a href="{{ asset('storage/kalender-akademik/' . $kalender->file) }}" target="_blank">
                                             <i class="bx bx-file"></i>

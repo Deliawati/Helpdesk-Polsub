@@ -44,7 +44,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#Id</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Role</th>
@@ -55,7 +55,7 @@
                         <tbody>
                             @foreach ($users as $user)
                                 <tr>
-                                    <th scope="row">{{ $user->id }}</th>
+                                    <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->role }}</td>

@@ -52,7 +52,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#ID</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Pertanyaan</th>
                                 <th scope="col">Response</th>
                                 <th scope="col">Attachment</th>
@@ -62,7 +62,7 @@
                         <tbody>
                             @foreach ($chatbots as $chat)
                                 <tr>
-                                    <th scope="row">{{ $chat->id }}</th>
+                                    <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $chat->pertanyaan }}</td>
                                     <td>
                                         <div class="wrap-2-lines">

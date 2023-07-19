@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModal{{$chat->id}}Label">Formulir Penambahan User</h5>
+                <h5 class="modal-title" id="editModal{{$chat->id}}Label">Formulir Penambahan Response Chatbot</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="POST" action="{{ route('modul-chatbot.update', $chat->id) }}" enctype="multipart/form-data">

@@ -44,7 +44,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#ID</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Layanan</th>
                                 {{-- <th scope="col">Melalui</th> --}}
                                 <th scope="col">Konfirmasi</th>
@@ -54,7 +54,7 @@
                         <tbody>
                             @foreach ($layanans as $layanan)
                                 <tr>
-                                    <th scope="row">{{ $layanan->id }}</th>
+                                    <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{!! $layanan->nama !!}</td>
                                     {{-- <td class="melalui">
                                         <ul>
@@ -83,8 +83,6 @@
                                             <i class="bx bx-edit"></i>
                                         </button>
 
-                                        @include('master.info-akademik.layanan.editModal')
-
                                         <form method="POST"
                                             action="{{ route('master-layanan-akademik.destroy', $layanan->id) }}"
                                             class="d-inline">
@@ -100,6 +98,11 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    @foreach($layanans as $layanan)
+                        @include('master.info-akademik.layanan.editModal')
+                    @endforeach
+
                 </div>
             </div>
         </div>

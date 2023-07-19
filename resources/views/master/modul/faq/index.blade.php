@@ -44,7 +44,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#ID</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Pertanyaan</th>
                                 <th scope="col">Jawaban</th>
                                 <th scope="col">Kategori</th>
@@ -55,7 +55,7 @@
                         <tbody>
                             @foreach ($faqs as $faq)
                                 <tr>
-                                    <th scope="row">{{ $faq->id }}</th>
+                                    <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $faq->pertanyaan }}</td>
                                     <td>{!! $faq->jawaban !!}</td>
                                     <td>{{ $faq->kategori }}</td>
@@ -95,9 +95,7 @@
                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#editModal{{ $faq->id }}">
                                             <i class="bx bx-edit"></i>
-                                        </button>
-
-                                        @include('master.modul.faq.editModal')
+                                        </button>                                        
 
                                         <form method="POST" action="{{ route('modul-faq.destroy', $faq->id) }}"
                                             class="d-inline">
@@ -113,6 +111,11 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    @foreach ($faqs as $faq)
+                        @include('master.modul.faq.editModal')
+                    @endforeach
+
                 </div>
             </div>
         </div>
