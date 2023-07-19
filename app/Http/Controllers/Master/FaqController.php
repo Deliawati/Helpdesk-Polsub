@@ -12,10 +12,16 @@ class FaqController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         $data['faqs'] = Faq::all();
+        $data['kategori'] = ['UKT', 'beasiswa', 'kelulusan', 'PMB', 'perkuliahan', 'surat menyurat'];
+
+        if($request->get('kategori')){
+            $data['faqs'] = Faq::where('kategori', $request->get('kategori'))->get();
+        }
+
         return view('master.modul.faq.index', $data);
     }
 

@@ -31,12 +31,28 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="d-flex justify-content-between align-items-center">
-                    Data FAQ
-                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
-                        <i class="bx bx-plus"></i>
-                    </button>
-                </h5>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5>Data FAQ</h5>
+
+                    <div class="d-flex">
+                        <div class="form-group d-flex align-items-center me-3">
+                            <label for="kategori" class="me-1">Filter Kategori:</label>
+                            <form method="GET" action="{{ route('modul-faq.index') }}">
+                                <select class="form-control" id="kategori" name="kategori" onchange="this.form.submit()">
+                                    <option value="">Semua Kategori</option>
+                                    @foreach ($kategori as $item)
+                                        <option value="{{ $item }}"
+                                            {{ $item == request()->get('kategori') ? 'selected' : '' }}>{{ $item }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </form>
+                        </div>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
+                            <i class="bx bx-plus"></i>
+                        </button>
+                    </div>
+                </div>
 
                 @include('master.modul.faq.createModal')
 
@@ -63,10 +79,10 @@
                                         @if ($faq->attachments->count() > 0)
                                             <ul class="ps-2 ms-0 mb-0">
                                                 @foreach ($faq->attachments as $attachment)
-                                                    <li> 
+                                                    <li>
                                                         <a href="{{ asset('storage/faq/' . $attachment->nama) }}"
                                                             target="_blank" class="btn btn-sm btn-outline-primary mb-1"
-                                                            title="{{$attachment->nama}}">
+                                                            title="{{ $attachment->nama }}">
                                                             <i class="bx bx-download"></i>
                                                         </a>
                                                         <button class="btn btn-sm btn-outline-danger mb-1"
@@ -95,7 +111,7 @@
                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#editModal{{ $faq->id }}">
                                             <i class="bx bx-edit"></i>
-                                        </button>                                        
+                                        </button>
 
                                         <form method="POST" action="{{ route('modul-faq.destroy', $faq->id) }}"
                                             class="d-inline">
