@@ -39,6 +39,7 @@ class ChatbotController extends Controller
                 'data' => [
                     'pertanyaan' => $bestMatch->pertanyaan,
                     'jawaban' => Chatbot::where('pertanyaan', $bestMatch->pertanyaan)->first()->jawaban,
+                    'attachments' => Chatbot::where('pertanyaan', $bestMatch->pertanyaan)->first()->attachments,
                 ],
             ]);
         }
@@ -49,6 +50,7 @@ class ChatbotController extends Controller
             'data' => [
                 'pertanyaan' => $request->pertanyaan,
                 'jawaban' => 'Maaf, saya tidak mengerti pertanyaan Anda.',
+                'attachments' => [],
             ],
         ]);
     }

@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="editModal{{$chat->id}}Label">Formulir Penambahan User</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="{{ route('modul-chatbot.update', $chat->id) }}">
+            <form method="POST" action="{{ route('modul-chatbot.update', $chat->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
@@ -16,6 +16,10 @@
                     <div class="mb-3">
                         <label for="jawaban" class="form-label">Jawaban</label>
                         <textarea class="form-control" id="jawaban" name="jawaban" required>{{$chat->jawaban}}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="attachment" class="form-label">Attachment Baru</label>
+                        <input type="file" class="form-control" id="attachment" name="attachment[]" multiple>
                     </div>
                 </div>
                 <div class="modal-footer">

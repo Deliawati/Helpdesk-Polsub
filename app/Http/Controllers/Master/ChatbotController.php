@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Models\Chatbot;
+use App\Models\File;
 use Illuminate\Http\Request;
 
 class ChatbotController extends Controller
@@ -37,10 +38,21 @@ class ChatbotController extends Controller
             'jawaban' => 'required',
         ]);
 
-        Chatbot::create([
+        $chatbot = Chatbot::create([
             'pertanyaan' => $request->pertanyaan,
             'jawaban' => $request->jawaban,
         ]);
+
+        foreach ($request->attachment as $file) {
+            $file = $file->store('public/chatbot');
+            // trim public/chatbot/ from $file
+            $file = substr($file, 15);
+            File::create([
+                'parent_id' => $chatbot->id,
+                'nama' => $file,
+                'jenis' => 'chatbot',
+            ]);
+        }
 
         return redirect()->route('modul-chatbot.index')->with('success', 'Data berhasil ditambahkan');
     }
@@ -76,6 +88,17 @@ class ChatbotController extends Controller
             'pertanyaan' => $request->pertanyaan,
             'jawaban' => $request->jawaban,
         ]);
+
+        foreach ($request->attachment as $file) {            
+            $file = $file->store('public/chatbot');
+            // trim public/chatbot/ from $file
+            $file = substr($file, 15);
+            File::create([
+                'parent_id' => $id,
+                'nama' => $file,
+                'jenis' => 'chatbot',
+            ]);
+        }
 
         return redirect()->route('modul-chatbot.index')->with('success', 'Data berhasil diubah');
     }

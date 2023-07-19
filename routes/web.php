@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Master\ChatbotController;
 use App\Http\Controllers\Master\FaqController;
+use App\Http\Controllers\Master\FileController;
 use App\Http\Controllers\Master\InfoAkademik\KalenderController;
 use App\Http\Controllers\Master\InfoAkademik\LayananController;
 use App\Http\Controllers\Master\InfoAkademik\PeraturanController;
@@ -30,6 +31,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('modul-tiket', TiketController::class);
     Route::resource('modul-chatbot', ChatbotController::class);
+    Route::delete('modul-chatbot/attachment/{id}', [FileController::class, 'deleteAttachment'])->name('attachment.delete');
     Route::resource('modul-faq', FaqController::class);
     Route::resource('master-layanan-akademik', LayananController::class);
     Route::resource('master-kalender-akademik', KalenderController::class);

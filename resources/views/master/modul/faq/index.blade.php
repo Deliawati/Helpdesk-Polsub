@@ -48,6 +48,7 @@
                                 <th scope="col">Pertanyaan</th>
                                 <th scope="col">Jawaban</th>
                                 <th scope="col">Kategori</th>
+                                <th scope="col">Attachment</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -58,6 +59,38 @@
                                     <td>{{ $faq->pertanyaan }}</td>
                                     <td>{!! $faq->jawaban !!}</td>
                                     <td>{{ $faq->kategori }}</td>
+                                    <td width="20%">
+                                        @if ($faq->attachments->count() > 0)
+                                            <ul class="ps-2 ms-0 mb-0">
+                                                @foreach ($faq->attachments as $attachment)
+                                                    <li> 
+                                                        <a href="{{ asset('storage/faq/' . $attachment->nama) }}"
+                                                            target="_blank" class="btn btn-sm btn-outline-primary mb-1"
+                                                            title="{{$attachment->nama}}">
+                                                            <i class="bx bx-download"></i>
+                                                        </a>
+                                                        <button class="btn btn-sm btn-outline-danger mb-1"
+                                                            onclick="
+                                                            event.preventDefault();
+                                                            if(confirm('Apakah anda yakin ingin menghapus file ini?')){
+                                                                document.getElementById('deleteAttachment{{ $attachment->id }}').submit();
+                                                            }">
+                                                            <i class="bx bx-x"></i>
+                                                        </button>
+
+                                                        <form id="deleteAttachment{{ $attachment->id }}"
+                                                            action="{{ route('attachment.delete', $attachment->id) }}"
+                                                            method="POST" class="d-none">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @else
+                                            Tidak ada
+                                        @endif
+                                    </td>
                                     <td>
                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#editModal{{ $faq->id }}">
@@ -98,6 +131,13 @@
                 toolbar: 'undo redo | blocks fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
                 menubar: false,
                 forced_root_block: 'div'
+            });
+
+            // Prevent Bootstrap dialog from blocking focusin
+            document.addEventListener('focusin', (e) => {
+                if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+                    e.stopImmediatePropagation();
+                }
             });
         });
     </script>

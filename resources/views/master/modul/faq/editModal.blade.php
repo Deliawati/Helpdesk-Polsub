@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="editModal{{$faq->id}}Label">Formulir Penambahan User</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="{{ route('modul-faq.update', $faq->id) }}">
+            <form method="POST" action="{{ route('modul-faq.update', $faq->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
@@ -27,6 +27,10 @@
                             <option value="perkuliahan" @if($faq->kategori == 'perkuliahan') selected @endif>Perkuliahan</option>
                             <option value="surat menyurat" @if($faq->kategori == 'surat menyurat') selected @endif>Surat Menyurat</option>
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="attachment" class="form-label">Attachment Baru</label>
+                        <input type="file" class="form-control" id="attachment" name="attachment[]" multiple>
                     </div>
                 </div>
                 <div class="modal-footer">

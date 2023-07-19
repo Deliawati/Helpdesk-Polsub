@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="createModalLabel">Formulir Penambahan User</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="{{ route('modul-faq.store') }}">
+            <form method="POST" action="{{ route('modul-faq.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
@@ -26,6 +26,10 @@
                             <option value="perkuliahan">Perkuliahan</option>
                             <option value="surat menyurat">Surat Menyurat</option>
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="attachment" class="form-label">Attachment</label>
+                        <input type="file" class="form-control" id="attachment" name="attachment[]" multiple>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -61,9 +61,27 @@
                                                 </h5>
                                             </div>
                                             <div id="collapse-faq{{ $faq->id }}" class="collapse"
-                                                aria-labelledby="heading{{ $faq->id }}" data-parent="#accordion-faq-ukt">
+                                                aria-labelledby="heading{{ $faq->id }}"
+                                                data-parent="#accordion-faq-ukt">
                                                 <div class="card-body">
                                                     {!! $faq->jawaban !!}
+
+                                                    @if ($faq->attachments->count() > 0)
+                                                        <hr />
+                                                        <div class="font-weight-bold mb-2">Attachments:</div>
+                                                        <div class="d-flex">
+                                                            @foreach ($faq->attachments as $attachment)
+                                                                <div class="mr-1">
+                                                                    <a href="{{ asset('storage/faq/' . $attachment->nama) }}"
+                                                                        target="_blank"
+                                                                        class="btn btn-sm btn-outline-primary mb-1"
+                                                                        title="{{ $attachment->nama }}">
+                                                                        <i class="mdi mdi-download"></i>
+                                                                    </a>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -91,6 +109,23 @@
                                                 data-parent="#accordion-faq-beasiswa">
                                                 <div class="card-body">
                                                     {!! $faq->jawaban !!}
+
+                                                    @if ($faq->attachments->count() > 0)
+                                                        <hr />
+                                                        <div class="font-weight-bold mb-2">Attachments:</div>
+                                                        <div class="d-flex">
+                                                            @foreach ($faq->attachments as $attachment)
+                                                                <div class="mr-1">
+                                                                    <a href="{{ asset('storage/faq/' . $attachment->nama) }}"
+                                                                        target="_blank"
+                                                                        class="btn btn-sm btn-outline-primary mb-1"
+                                                                        title="{{ $attachment->nama }}">
+                                                                        <i class="mdi mdi-download"></i>
+                                                                    </a>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -118,6 +153,23 @@
                                                 data-parent="#accordion-faq-kelulusan">
                                                 <div class="card-body">
                                                     {!! $faq->jawaban !!}
+
+                                                    @if ($faq->attachments->count() > 0)
+                                                        <hr />
+                                                        <div class="font-weight-bold mb-2">Attachments:</div>
+                                                        <div class="d-flex">
+                                                            @foreach ($faq->attachments as $attachment)
+                                                                <div class="mr-1">
+                                                                    <a href="{{ asset('storage/faq/' . $attachment->nama) }}"
+                                                                        target="_blank"
+                                                                        class="btn btn-sm btn-outline-primary mb-1"
+                                                                        title="{{ $attachment->nama }}">
+                                                                        <i class="mdi mdi-download"></i>
+                                                                    </a>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -145,6 +197,23 @@
                                                 data-parent="#accordion-faq-pmb">
                                                 <div class="card-body">
                                                     {!! $faq->jawaban !!}
+
+                                                    @if ($faq->attachments->count() > 0)
+                                                        <hr />
+                                                        <div class="font-weight-bold mb-2">Attachments:</div>
+                                                        <div class="d-flex">
+                                                            @foreach ($faq->attachments as $attachment)
+                                                                <div class="mr-1">
+                                                                    <a href="{{ asset('storage/faq/' . $attachment->nama) }}"
+                                                                        target="_blank"
+                                                                        class="btn btn-sm btn-outline-primary mb-1"
+                                                                        title="{{ $attachment->nama }}">
+                                                                        <i class="mdi mdi-download"></i>
+                                                                    </a>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -172,6 +241,23 @@
                                                 data-parent="#accordion-faq-perkuliahan">
                                                 <div class="card-body">
                                                     {!! $faq->jawaban !!}
+
+                                                    @if ($faq->attachments->count() > 0)
+                                                        <hr />
+                                                        <div class="font-weight-bold mb-2">Attachments:</div>
+                                                        <div class="d-flex">
+                                                            @foreach ($faq->attachments as $attachment)
+                                                                <div class="mr-1">
+                                                                    <a href="{{ asset('storage/faq/' . $attachment->nama) }}"
+                                                                        target="_blank"
+                                                                        class="btn btn-sm btn-outline-primary mb-1"
+                                                                        title="{{ $attachment->nama }}">
+                                                                        <i class="mdi mdi-download"></i>
+                                                                    </a>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -199,6 +285,23 @@
                                                 data-parent="#accordion-faq-surat">
                                                 <div class="card-body">
                                                     {!! $faq->jawaban !!}
+
+                                                    @if ($faq->attachments->count() > 0)
+                                                        <hr />
+                                                        <div class="font-weight-bold mb-2">Attachments:</div>
+                                                        <div class="d-flex">
+                                                            @foreach ($faq->attachments as $attachment)
+                                                                <div class="mr-1">
+                                                                    <a href="{{ asset('storage/faq/' . $attachment->nama) }}"
+                                                                        target="_blank"
+                                                                        class="btn btn-sm btn-outline-primary mb-1"
+                                                                        title="{{ $attachment->nama }}">
+                                                                        <i class="mdi mdi-download"></i>
+                                                                    </a>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

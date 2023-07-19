@@ -14,4 +14,9 @@ class Faq extends Model
         'jawaban',
         'kategori',
     ];
+
+    public function attachments()
+    {
+        return $this->hasMany(File::class, 'parent_id')->where('jenis', 'faq');
+    }
 }

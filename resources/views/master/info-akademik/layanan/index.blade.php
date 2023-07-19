@@ -118,6 +118,12 @@
                 toolbar: 'undo redo | blocks fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
                 menubar: false
             });
+            // Prevent Bootstrap dialog from blocking focusin
+            document.addEventListener('focusin', (e) => {
+                if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+                    e.stopImmediatePropagation();
+                }
+            });
         });
     </script>
 @endsection

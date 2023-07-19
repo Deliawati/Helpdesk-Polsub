@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use App\Models\Tiket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PertanyaanController extends Controller
 {
@@ -34,6 +35,9 @@ class PertanyaanController extends Controller
             'kategori' => $request->kategori,
             'pertanyaan' => $request->pertanyaan
         ]);
+
+        // send email to user
+        Mail::to(auth()->user()->email)->send(new \App\Mail\TiketTerkirim($tiket));
 
         return redirect()->route('pertanyaan')->with('success', 'Tiket dengan id:'.$tiket->id.' pertanyaan berhasil dikirim');
     }

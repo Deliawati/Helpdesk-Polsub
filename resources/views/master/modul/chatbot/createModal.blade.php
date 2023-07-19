@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="createModalLabel">Formulir Penambahan Response Chatbot</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="{{ route('modul-chatbot.store') }}">
+            <form method="POST" action="{{ route('modul-chatbot.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
@@ -15,6 +15,10 @@
                     <div class="mb-3">
                         <label for="jawaban" class="form-label">Jawaban</label>
                         <textarea class="form-control" id="jawaban" name="jawaban"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="attachment" class="form-label">Attachment</label>
+                        <input type="file" class="form-control" id="attachment" name="attachment[]" multiple>
                     </div>
                 </div>
                 <div class="modal-footer">

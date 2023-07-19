@@ -12,17 +12,23 @@ class TiketController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // 
         if(auth()->user()->role == 'superadmin'){
             $data['tikets'] = Tiket::all();
+            $data['kategori'] = ['UKT', 'beasiswa', 'kelulusan', 'PMB', 'perkuliahan', 'surat menyurat'];
         }else{
             // get permissions
             $permissions = auth()->user()->permissions->pluck('name')->toArray();
+            $data['kategori'] = $permissions;
             $data['tikets'] = Tiket::whereIn('kategori', $permissions)->get();
         }
-        
+
+        if($request->get('kategori')){
+            $data['tikets'] = Tiket::where('kategori', $request->get('kategori'))->get();
+        }
+
         return view('master.modul.tiket.index', $data);
     }
 

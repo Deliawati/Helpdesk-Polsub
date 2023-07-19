@@ -38,9 +38,23 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="d-flex justify-content-between align-items-center">
-                    Data Tiket
-                </h5>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0">Data Tiket</h5>
+
+                    <div class="form-group d-flex align-items-center">
+                        <label for="kategori" class="me-1">Filter Kategori:</label>
+                        <form method="GET" action="{{ route('modul-tiket.index') }}">
+                            <select class="form-control" id="kategori" name="kategori" onchange="this.form.submit()">
+                                <option value="">Semua Kategori</option>
+                                @foreach ($kategori as $item)
+                                    <option value="{{ $item }}"
+                                        {{ $item == request()->get('kategori') ? 'selected' : '' }}>{{ $item }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </form>
+                    </div>
+                </div>
 
                 <div class="table-responsive">
                     <table class="table">

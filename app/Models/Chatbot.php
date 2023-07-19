@@ -30,4 +30,9 @@ class Chatbot extends Model
 
         return $bestMatch;
     }
+
+    public function attachments()
+    {
+        return $this->hasMany(File::class, 'parent_id')->where('jenis', 'chatbot');
+    }
 }

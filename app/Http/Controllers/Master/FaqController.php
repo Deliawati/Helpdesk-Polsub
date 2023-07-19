@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
+use App\Models\File;
 use Illuminate\Http\Request;
 
 class FaqController extends Controller
@@ -38,7 +39,18 @@ class FaqController extends Controller
             'kategori' => 'required',
         ]);
 
-        Faq::create($request->all());
+        $faq = Faq::create($request->all());
+
+        foreach ($request->attachment as $file) {
+            $file = $file->store('public/faq');
+            // trim public/faq/ from $file
+            $file = substr($file, 11);
+            File::create([
+                'parent_id' => $faq->id,
+                'nama' => $file,
+                'jenis' => 'faq',
+            ]);
+        }
 
         return redirect()->route('modul-faq.index')->with('success', 'FAQ berhasil ditambahkan');
     }
@@ -71,7 +83,18 @@ class FaqController extends Controller
             'kategori' => 'required',
         ]);
 
-        Faq::find($id)->update($request->all());
+        $faq = Faq::find($id)->update($request->all());
+
+        foreach ($request->attachment as $file) {
+            $file = $file->store('public/faq');
+            // trim public/faq/ from $file
+            $file = substr($file, 11);
+            File::create([
+                'parent_id' => $id,
+                'nama' => $file,
+                'jenis' => 'faq',
+            ]);
+        }
 
         return redirect()->route('modul-faq.index')->with('success', 'FAQ berhasil diubah');
     }

@@ -126,9 +126,26 @@
                 },
                 success: function(response) {
                     var botMessage =
-                        '<div class="message bot-message"><span class="message-bot-icon"><i class="mdi mdi-robot"></i></span><p>' +
-                        response.data.jawaban + '</p><div class="message-time">' + getCurrentTime() +
-                        '</div></div>';
+                        `<div class="message bot-message">
+                            <span class="message-bot-icon"><i class="mdi mdi-robot"></i></span>
+                            ${response.data.jawaban}
+                            <div class="message-time">${getCurrentTime()}</div>`;
+                    if (response.data.attachments.length > 0) {
+                        botMessage += '<hr/><div class="font-weight-bold mb-2">Attachments:</div>';
+                        // foreach attachments
+                        response.data.attachments.forEach(attachment => {
+                            botMessage += `
+                                    <ul>
+                                        <li>
+                                            <a href="{{asset('storage')}}/${attachment.jenis}/${attachment.nama}" title="${attachment.nama}" target="_blank">
+                                                ${attachment.nama}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                `;
+                        });
+                    }
+                    botMessage += '</div>';
                     chatContainer.innerHTML += botMessage;
                     document.getElementById('user-input').value = '';
                     chatContainer.scrollTop = chatContainer.scrollHeight;

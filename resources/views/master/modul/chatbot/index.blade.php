@@ -55,6 +55,7 @@
                                 <th scope="col">#ID</th>
                                 <th scope="col">Pertanyaan</th>
                                 <th scope="col">Response</th>
+                                <th scope="col">Attachment</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -68,11 +69,43 @@
                                             {!! $chat->jawaban !!}
                                         </div>
                                     </td>
+                                    <td width="20%">
+                                        @if ($chat->attachments->count() > 0)
+                                            <ul class="ps-2 ms-0 mb-0">
+                                                @foreach ($chat->attachments as $attachment)
+                                                    <li> 
+                                                        <a href="{{ asset('storage/chatbot/' . $attachment->nama) }}"
+                                                            target="_blank" class="btn btn-sm btn-outline-primary mb-1"
+                                                            title="{{$attachment->nama}}">
+                                                            <i class="bx bx-download"></i>
+                                                        </a>
+                                                        <button class="btn btn-sm btn-outline-danger mb-1"
+                                                            onclick="
+                                                            event.preventDefault();
+                                                            if(confirm('Apakah anda yakin ingin menghapus file ini?')){
+                                                                document.getElementById('deleteAttachment{{ $attachment->id }}').submit();
+                                                            }">
+                                                            <i class="bx bx-x"></i>
+                                                        </button>
+
+                                                        <form id="deleteAttachment{{ $attachment->id }}"
+                                                            action="{{ route('attachment.delete', $attachment->id) }}"
+                                                            method="POST" class="d-none">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @else
+                                            Tidak ada
+                                        @endif
+                                    </td>
                                     <td>
                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#editModal{{ $chat->id }}">
                                             <i class="bx bx-edit"></i>
-                                        </button>                                        
+                                        </button>
 
                                         <form method="POST" action="{{ route('modul-chatbot.destroy', $chat->id) }}"
                                             class="d-inline">
@@ -92,7 +125,7 @@
                     @foreach ($chatbots as $chat)
                         @include('master.modul.chatbot.editModal')
                     @endforeach
-                    
+
                 </div>
             </div>
         </div>
