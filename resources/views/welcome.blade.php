@@ -31,7 +31,7 @@
                                 ">Kami siap membantu Anda dengan solusi cepat dan ramah untuk segala
                                     pertanyaan dan masalah yang Anda hadapi.
                                 </p>
-                                <a href="{{route('pertanyaan')}}" class="btn btn-secondary mt-3">Ajukan TIket</a>
+                                <a href="{{route('pertanyaan')}}" class="btn btn-default mt-3" style="background-color:#146C94; color:white;">Buat TIket</a>
                             </div>
                             <div class="mt-5 mt-lg-0">
                                 <div class="card">

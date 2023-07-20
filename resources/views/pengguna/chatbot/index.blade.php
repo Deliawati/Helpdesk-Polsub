@@ -72,14 +72,16 @@
     <section class="our-services">
         <div class="container pt-5">
             <h4>Chatbot</h4>
-            <p>Silahkan bertanya kepada chatbot kami.</p>
+            <p>Silahkan bertanya kepada chatbot kami. Jika pertanyaan Anda tidak terjawab, silahkan ajukan pertanyaan dengan membuat tiket agar kami dapat membantu Anda dengan lebih baik.</p>
 
             <div class="card">
                 <div class="card-body">
                     <div id="wrap-chat">
                         <div class="message bot-message">
                             <span class="message-bot-icon"><i class="mdi mdi-robot"></i></span>
-                            <p>Selamat datang di Chatbot kami!</p>
+                            <p>Selamat datang di Chatbot kami!
+                            </p>
+                            <p>Mohon gunakan ejaan yang baik dan benar!</p>
                             <div class="message-time text-right">{{ \Carbon\Carbon::now()->format('h:i A') }}</div>
                         </div>
                     </div>

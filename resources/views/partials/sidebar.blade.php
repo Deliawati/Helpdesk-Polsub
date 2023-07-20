@@ -4,7 +4,7 @@
             <span class="app-brand-logo demo">
                 <img  src="{{ asset('logoPOLSUB2-1.png') }}" alt="Brand Logo" class="img-fluid" width="25">
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Helpdesk</span>
+            <h6 class="text-capitalize fs-4 mt-3 text-body fw-bolder">Helpdesk</h6>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -46,7 +46,7 @@
         </li>
 
         <!-- Components -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Master</span></li>        
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Master</span></li>
         <li class="menu-item">
             <a href="javasscript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-info-circle"></i>
@@ -74,8 +74,8 @@
             <li class="menu-item">
                 <a href="{{route('master-users.index')}}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-group"></i>
-                    <div data-i18n="Basic">Users</div>
-                </a>           
+                    <div data-i18n="Basic">Data Admin</div>
+                </a>
             </li>
         @endif
     </ul>

@@ -39,8 +39,8 @@
                             aria-expanded="false">Pertanyaan</button>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="{{ route('faq') }}">FAQ</a>
-                            <a class="dropdown-item" href="{{ route('pertanyaan') }}">Tiket</a>
+                            <a class="dropdown-item" href="{{ route('faq') }}">Frequency Asked Question</a>
+                            <a class="dropdown-item" href="{{ route('pertanyaan') }}">Buat Tiket</a>
                         </div>
                     </div>
                 </li>
@@ -50,7 +50,7 @@
 
                 <li class="nav-item">
                     @guest
-                        <a class="nav-link btn btn-success" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link btn btn-default" href="{{ route('login') }}" style="background-color:#146C94; color:white;">Login</a>
                     @else
                         <div class="dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:;" data-toggle="dropdown"

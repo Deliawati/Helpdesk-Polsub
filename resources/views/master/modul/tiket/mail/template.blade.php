@@ -5,6 +5,10 @@
 </head>
 <body>
     <h2>Balasan Pertanyaan Anda</h2>
+
+    <h3>Dibalas Oleh :</h3>
+    <p>{{ Auth::user()->name }}</p>
+
     <p><strong>Pertanyaan:</strong></p>
     <p>{{ $tiket->pertanyaan }}</p>
 

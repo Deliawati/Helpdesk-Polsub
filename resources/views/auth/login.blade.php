@@ -78,7 +78,7 @@
                   <span class="app-brand-logo demo">
                     <img src="{{ asset('logoPOLSUB2-1.png') }}" alt="Brand Logo" class="img-fluid" width="40" />
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">Helpdesk</span>
+                  <h6 class="text-capitalize fs-4 mt-3 text-body fw-bolder">Helpdesk</h6>
                 </a>
               </div>
               <!-- /Logo -->
@@ -98,7 +98,7 @@
                   />
                   @error('email')
                     <div class="invalid-feedback">
-                        {{$message}} 
+                        {{$message}}
                     </div>
                   @enderror
                 </div>
@@ -122,7 +122,7 @@
                   </div>
                     @error('password')
                         <div class="invalid-feedback">
-                            {{$message}} 
+                            {{$message}}
                         </div>
                     @enderror
                 </div>
@@ -134,7 +134,7 @@
                   <a href="{{route('password.request')}}" class="float-end">Forgot Password</a>
                 </div>
                 <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit">Login</button>
+                  <button class="btn btn-defaut d-grid w-100" type="submit" style="background-color:#146C94; color:white;">Login</button>
                 </div>
               </form>
 

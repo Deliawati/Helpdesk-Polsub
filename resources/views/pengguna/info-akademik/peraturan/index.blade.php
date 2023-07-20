@@ -9,7 +9,6 @@
 <section class="our-services">
     <div class="container pt-5">
         <h4>Peraturan Akademik</h4>
-        <p>Berikut adalah peraturan akademik yang dapat diakses oleh mahasiswa.</p>
 
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
