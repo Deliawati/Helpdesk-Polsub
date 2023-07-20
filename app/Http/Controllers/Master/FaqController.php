@@ -49,12 +49,12 @@ class FaqController extends Controller
 
         if ($request->hasFile('attachment')) {
             foreach ($request->attachment as $file) {
-                $file = $file->store('public/faq');
-                // trim public/faq/ from $file
-                $file = substr($file, 11);
+                $file_name = time() . '_' . $file->getClientOriginalName();
+                $file->storeAs('public/faq', $file_name);
+
                 File::create([
                     'parent_id' => $faq->id,
-                    'nama' => $file,
+                    'name' => $file_name,
                     'jenis' => 'faq',
                 ]);
             }
@@ -95,12 +95,12 @@ class FaqController extends Controller
 
         if ($request->hasFile('attachment')) {
             foreach ($request->attachment as $file) {
-                $file = $file->store('public/faq');
-                // trim public/faq/ from $file
-                $file = substr($file, 11);
+                $file_name = time() . '_' . $file->getClientOriginalName();
+                $file->storeAs('public/faq', $file_name);
+
                 File::create([
                     'parent_id' => $id,
-                    'nama' => $file,
+                    'name' => $file_name,
                     'jenis' => 'faq',
                 ]);
             }

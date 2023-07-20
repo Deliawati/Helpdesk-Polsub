@@ -45,12 +45,12 @@ class ChatbotController extends Controller
 
         if ($request->hasFile('attachment')) {
             foreach ($request->attachment as $file) {
-                $file = $file->store('public/chatbot');
-                // trim public/chatbot/ from $file
-                $file = substr($file, 15);
+                $file_name = time() . '_' . $file->getClientOriginalName();
+                $file->storeAs('public/chatbot', $file_name);
+
                 File::create([
                     'parent_id' => $chatbot->id,
-                    'nama' => $file,
+                    'name' => $file_name,
                     'jenis' => 'chatbot',
                 ]);
             }
@@ -93,12 +93,12 @@ class ChatbotController extends Controller
 
         if ($request->hasFile('attachment')) {
             foreach ($request->attachment as $file) {
-                $file = $file->store('public/chatbot');
-                // trim public/chatbot/ from $file
-                $file = substr($file, 15);
+                $file_name = time() . '_' . $file->getClientOriginalName();
+                $file->storeAs('public/chatbot', $file_name);
+
                 File::create([
                     'parent_id' => $id,
-                    'nama' => $file,
+                    'nama' => $file_name,
                     'jenis' => 'chatbot',
                 ]);
             }
