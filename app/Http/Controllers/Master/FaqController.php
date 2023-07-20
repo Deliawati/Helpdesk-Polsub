@@ -54,7 +54,7 @@ class FaqController extends Controller
 
                 File::create([
                     'parent_id' => $faq->id,
-                    'name' => $file_name,
+                    'nama' => $file_name,
                     'jenis' => 'faq',
                 ]);
             }
@@ -100,7 +100,7 @@ class FaqController extends Controller
 
                 File::create([
                     'parent_id' => $id,
-                    'name' => $file_name,
+                    'nama' => $file_name,
                     'jenis' => 'faq',
                 ]);
             }

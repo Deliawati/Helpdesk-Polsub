@@ -50,7 +50,7 @@ class ChatbotController extends Controller
 
                 File::create([
                     'parent_id' => $chatbot->id,
-                    'name' => $file_name,
+                    'nama' => $file_name,
                     'jenis' => 'chatbot',
                 ]);
             }
