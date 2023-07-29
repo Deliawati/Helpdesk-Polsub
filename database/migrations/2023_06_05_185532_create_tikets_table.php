@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tikets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->enum('kategori', ['UKT', 'beasiswa', 'kelulusan', 'PMB', 'perkuliahan', 'surat menyurat']);
+            $table->foreignId('kategori_id')->constrained('kategori_layanans');
             $table->text('pertanyaan');
             $table->text('balasan')->nullable();
             $table->timestamps();

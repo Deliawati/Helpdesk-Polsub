@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pengguna;
 
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
+use App\Models\KategoriLayanan;
 use App\Models\Tiket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -18,7 +19,7 @@ class PertanyaanController extends Controller
         if (auth()->user()) {
             $data['my_tickets'] = Tiket::where('user_id', auth()->user()->id)->get();
         }
-        $data['kategoris'] = ['UKT', 'beasiswa', 'kelulusan', 'PMB', 'perkuliahan', 'surat menyurat'];
+        $data['kategoris'] = KategoriLayanan::all();
 
         return view('pengguna.pertanyaan.index', $data);
     }
@@ -32,7 +33,7 @@ class PertanyaanController extends Controller
 
         $tiket = Tiket::create([
             'user_id' => auth()->user()->id,
-            'kategori' => $request->kategori,
+            'kategori_id' => $request->kategori,
             'pertanyaan' => $request->pertanyaan
         ]);
 

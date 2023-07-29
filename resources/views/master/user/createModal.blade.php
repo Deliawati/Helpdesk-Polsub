@@ -24,7 +24,7 @@
                         <label for="permissions" class="form-label">Hak Akses Pelayanan</label>
                         <select class="form-control" id="permissions" name="permissions[]" multiple>
                             @foreach ($permissions as $permission)
-                                <option value="{{ $permission }}" class="text-capitalize">{{ $permission }}</option>
+                                <option value="{{ $permission->id }}" class="text-capitalize">{{ $permission->nama }}</option>
                             @endforeach
                         </select>
                     </div>

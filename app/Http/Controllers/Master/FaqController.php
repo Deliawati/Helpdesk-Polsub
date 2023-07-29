@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Master;
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
 use App\Models\File;
+use App\Models\KategoriLayanan;
 use Illuminate\Http\Request;
 
 class FaqController extends Controller
@@ -16,10 +17,10 @@ class FaqController extends Controller
     {
         //
         $data['faqs'] = Faq::all();
-        $data['kategori'] = ['UKT', 'beasiswa', 'kelulusan', 'PMB', 'perkuliahan', 'surat menyurat'];
+        $data['kategori'] = KategoriLayanan::all();
 
         if($request->get('kategori')){
-            $data['faqs'] = Faq::where('kategori', $request->get('kategori'))->get();
+            $data['faqs'] = Faq::where('kategori_id', $request->get('kategori'))->get();
         }
 
         return view('master.modul.faq.index', $data);
@@ -42,7 +43,7 @@ class FaqController extends Controller
         $request->validate([
             'pertanyaan' => 'required',
             'jawaban' => 'required',
-            'kategori' => 'required',
+            'kategori_id' => 'required',
         ]);
 
         $faq = Faq::create($request->all());

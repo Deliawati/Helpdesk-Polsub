@@ -6,6 +6,7 @@ use App\Http\Controllers\Master\FileController;
 use App\Http\Controllers\Master\InfoAkademik\KalenderController;
 use App\Http\Controllers\Master\InfoAkademik\LayananController;
 use App\Http\Controllers\Master\InfoAkademik\PeraturanController;
+use App\Http\Controllers\Master\KategoriLayananController;
 use App\Http\Controllers\Master\TiketController;
 use App\Http\Controllers\Master\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -37,6 +38,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('master-kalender-akademik', KalenderController::class);
     Route::resource('master-peraturan-akademik', PeraturanController::class);
     Route::resource('master-users', UserController::class);
+    Route::resource('master-kategori-layanan', KategoriLayananController::class);
 });
 
 Route::get('/chatbot', [App\Http\Controllers\Pengguna\ChatbotController::class, 'index'])->name('chatbot');

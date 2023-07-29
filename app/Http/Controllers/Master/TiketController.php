@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chatbot;
+use App\Models\KategoriLayanan;
 use App\Models\Tiket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -17,16 +19,18 @@ class TiketController extends Controller
         // 
         if(auth()->user()->role == 'superadmin'){
             $data['tikets'] = Tiket::all();
-            $data['kategori'] = ['UKT', 'beasiswa', 'kelulusan', 'PMB', 'perkuliahan', 'surat menyurat'];
+            $data['kategori'] = KategoriLayanan::all();
         }else{
             // get permissions
-            $permissions = auth()->user()->permissions->pluck('name')->toArray();
-            $data['kategori'] = $permissions;
-            $data['tikets'] = Tiket::whereIn('kategori', $permissions)->get();
+            $permissions = auth()->user()->permissions;
+            foreach($permissions as $permission){
+                $data['kategori'][] = $permission->kategori;
+            }
+            $data['tikets'] = Tiket::whereIn('kategori_id', $data['kategori'])->get();
         }
 
         if($request->get('kategori')){
-            $data['tikets'] = Tiket::where('kategori', $request->get('kategori'))->get();
+            $data['tikets'] = Tiket::where('kategori_id', $request->get('kategori'))->get();
         }
 
         return view('master.modul.tiket.index', $data);
@@ -81,6 +85,12 @@ class TiketController extends Controller
 
         // send email
         Mail::to($tiket->user->email)->send(new \App\Mail\Tiket($tiket));
+
+        // insert to chatbot
+        Chatbot::create([
+            'pertanyaan' => $tiket->pertanyaan,
+            'jawaban' => $tiket->balasan,
+        ]);
 
         return redirect()->route('modul-tiket.index')->with('success', 'Tiket berhasil diupdate');
     }

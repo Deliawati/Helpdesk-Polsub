@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_permissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->enum('name', ['UKT', 'beasiswa', 'kelulusan', 'PMB', 'perkuliahan', 'surat menyurat']);
+            $table->foreignId('kategori_id')->references('id')->on('kategori_layanans')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Kelola Data User')
+@section('title', 'Kelola Kategori Layanan')
 
 @section('head')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
@@ -31,14 +31,14 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="d-flex justify-content-between align-items-center">
-                    Data Users
+                    Kategori Layanan
                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
                         <i class="bx bx-plus"></i>
                     </button>
                 </h5>
 
                 <!-- Modal -->
-                @include('master.user.createModal')
+                @include('master.kategori-layanan.createModal')
 
                 <div class="table-responsive">
                     <table class="table">
@@ -46,34 +46,24 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Permission</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($kategori_layanans as $kategori_layanan)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role }}</td>
-                                    <td>
-                                        @foreach ($user->permissions as $permission)
-                                            <span class="badge bg-info">{{ $permission->kategori->nama }}</span>
-                                        @endforeach
-                                    </td>
+                                    <td>{{ $kategori_layanan->nama }}</td>
                                     <td>
                                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#editModal{{ $user->id }}">
+                                            data-bs-target="#editModal{{ $kategori_layanan->id }}">
                                             <i class="bx bx-edit"></i>
                                         </button>
 
                                         <!-- Modal -->
-                                        @include('master.user.editModal')
+                                        @include('master.kategori-layanan.editModal')
 
-                                        <form method="POST" action="{{ route('master-users.destroy', $user->id) }}"
+                                        <form method="POST" action="{{ route('master-kategori-layanan.destroy', $kategori_layanan->id) }}"
                                             class="d-inline">
                                             @csrf
                                             @method('DELETE')

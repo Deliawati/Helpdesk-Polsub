@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Models\KategoriLayanan;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class UserController extends Controller
                 ->where('role', '!=', 'user')
                 ->get();
         }
-        $data['permissions'] = ['UKT', 'beasiswa', 'kelulusan', 'PMB', 'perkuliahan', 'surat menyurat'];
+        $data['permissions'] = KategoriLayanan::all();
         return view('master.user.index', $data);
     }
 
@@ -58,7 +59,7 @@ class UserController extends Controller
 
         foreach($request->permissions as $permission){
             $user->permissions()->create([
-                'name' => $permission,
+                'kategori_id' => $permission,
             ]);
         }
 
@@ -112,7 +113,7 @@ class UserController extends Controller
         // add new permissions
         foreach($request->permissions as $permission){
             $user->permissions()->create([
-                'name' => $permission,
+                'kategori_id' => $permission,
             ]);
         }
 

@@ -58,6 +58,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hasPermissionTo($permission)
     {
-        return $this->permissions()->where('name', $permission)->exists();
+        return $this->permissions()->where('kategori_id', $permission)->exists();
     }    
 }

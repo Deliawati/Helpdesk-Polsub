@@ -41,8 +41,8 @@
                                 <select class="form-control" id="kategori" name="kategori" onchange="this.form.submit()">
                                     <option value="">Semua Kategori</option>
                                     @foreach ($kategori as $item)
-                                        <option value="{{ $item }}"
-                                            {{ $item == request()->get('kategori') ? 'selected' : '' }}>{{ $item }}
+                                        <option value="{{ $item->id }}"
+                                            {{ $item->id == request()->get('kategori') ? 'selected' : '' }}>{{ $item->nama }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -74,7 +74,7 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $faq->pertanyaan }}</td>
                                     <td>{!! $faq->jawaban !!}</td>
-                                    <td>{{ $faq->kategori }}</td>
+                                    <td>{{ $faq->kategori->nama }}</td>
                                     <td width="20%">
                                         @if ($faq->attachments->count() > 0)
                                             <ul class="ps-2 ms-0 mb-0">

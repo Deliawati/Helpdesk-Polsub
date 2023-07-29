@@ -12,11 +12,16 @@ class Faq extends Model
     protected $fillable = [
         'pertanyaan',
         'jawaban',
-        'kategori',
+        'kategori_id',
     ];
 
     public function attachments()
     {
         return $this->hasMany(File::class, 'parent_id')->where('jenis', 'faq');
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(KategoriLayanan::class);
     }
 }

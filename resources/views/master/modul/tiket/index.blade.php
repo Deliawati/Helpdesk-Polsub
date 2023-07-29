@@ -47,8 +47,8 @@
                             <select class="form-control" id="kategori" name="kategori" onchange="this.form.submit()">
                                 <option value="">Semua Kategori</option>
                                 @foreach ($kategori as $item)
-                                    <option value="{{ $item }}"
-                                        {{ $item == request()->get('kategori') ? 'selected' : '' }}>{{ $item }}
+                                    <option value="{{ $item->id }}"
+                                        {{ $item->id == request()->get('kategori') ? 'selected' : '' }}>{{ $item->nama }}
                                     </option>
                                 @endforeach
                             </select>
@@ -75,7 +75,7 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $tiket->user->email }}</td>
-                                    <td>{{ $tiket->kategori }}</td>
+                                    <td>{{ $tiket->kategori->nama }}</td>
                                     <td>
                                         <div class="max-3-line">
                                             {{ $tiket->pertanyaan }}
@@ -90,7 +90,7 @@
                                         @if ($tiket->balasan)
                                             <span class="badge bg-success">Dibalas</span>
                                         @else
-                                            <span class="badge bg-warning">Pending</span>
+                                            <span class="badge bg-danger">Pending</span>
                                         @endif
                                     </td>
                                     <td>{{ $tiket->created_at }}</td>

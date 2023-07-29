@@ -54,8 +54,8 @@
                                             <label for="kategori">Kategori</label>
                                             <select class="form-control" id="kategori" name="kategori">
                                                 @foreach ($kategoris as $kategori)
-                                                    <option value="{{ $kategori }}" class="text-capitalize">
-                                                        {{ $kategori }}</option>
+                                                    <option value="{{ $kategori->id }}" class="text-capitalize">
+                                                        {{ $kategori->nama }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -87,7 +87,7 @@
                                                     data-toggle="collapse" data-target="#collapse-riwayat{{ $tiket->id }}"
                                                     aria-expanded="false" aria-controls="collapse-riwayat{{ $tiket->id }}">
                                                     <span class="badge badge-light">
-                                                        {{ $tiket->kategori }}
+                                                        {{ $tiket->kategori->nama }}
                                                     </span>
                                                     {{ '#' . $tiket->id . ' ' . $tiket->pertanyaan }}
                                                 </button>

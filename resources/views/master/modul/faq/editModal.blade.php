@@ -18,14 +18,11 @@
                         <textarea class="form-control" id="jawaban" name="jawaban" required>{{$faq->jawaban}}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="kategori" class="form-label">Kategori</label>
-                        <select class="form-select" id="kategori" name="kategori" required>
-                            <option value="UKT" @if($faq->kategori == 'UKT') selected @endif>UKT</option>
-                            <option value="beasiswa" @if($faq->kategori == 'beasiswa') selected @endif>Beasiswa</option>
-                            <option value="kelulusan" @if($faq->kategori == 'kelulusan') selected @endif>Kelulusan</option>
-                            <option value="PMB" @if($faq->kategori == 'PMB') selected @endif>PMB</option>
-                            <option value="perkuliahan" @if($faq->kategori == 'perkuliahan') selected @endif>Perkuliahan</option>
-                            <option value="surat menyurat" @if($faq->kategori == 'surat menyurat') selected @endif>Surat Menyurat</option>
+                        <label for="kategori_id" class="form-label">Kategori</label>
+                        <select class="form-select" id="kategori_id" name="kategori_id" required>
+                            @foreach ($kategori as $k)
+                                <option value="{{ $k->id }}" @if ($faq->kategori_id == $k->id) selected @endif>{{ $k->nama }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-3">

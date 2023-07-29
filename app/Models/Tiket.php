@@ -11,7 +11,7 @@ class Tiket extends Model
 
     protected $fillable = [
         'user_id',
-        'kategori',
+        'kategori_id',
         'pertanyaan',
         'balasan',        
     ];
@@ -19,5 +19,10 @@ class Tiket extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(KategoriLayanan::class);
     }
 }
