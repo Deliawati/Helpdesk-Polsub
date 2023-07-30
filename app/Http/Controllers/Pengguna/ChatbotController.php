@@ -12,7 +12,8 @@ class ChatbotController extends Controller
     //
     public function index()
     {
-        return view('pengguna.chatbot.index');
+        $data['pertanyaan'] = Chatbot::all()->pluck('pertanyaan');
+        return view('pengguna.chatbot.index', $data);
     }
 
     public function chat(Request $request)

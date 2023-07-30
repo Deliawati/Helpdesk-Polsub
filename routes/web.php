@@ -31,6 +31,7 @@ Auth::routes(['verify' => true]);
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('modul-tiket', TiketController::class);
+    Route::get('modul-tike/{id}/notifikasi', [TiketController::class, 'notifikasi'])->name('modul-tiket.notifikasi');
     Route::resource('modul-chatbot', ChatbotController::class);
     Route::delete('modul-chatbot/attachment/{id}', [FileController::class, 'deleteAttachment'])->name('attachment.delete');
     Route::resource('modul-faq', FaqController::class);

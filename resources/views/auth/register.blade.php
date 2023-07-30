@@ -16,7 +16,7 @@
 
                                 <div class="mb-3">
                                     <label for="name"
-                                        class="form-label text-md-end">{{ __('Name') }}<span class="text-danger">*</span></label>
+                                        class="form-label text-md-end">{{ __('Nama') }}<span class="text-danger">*</span></label>
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name') }}" placeholder="ex: Delia Polsub" required autocomplete="name" autofocus>
@@ -27,6 +27,21 @@
                                         </span>
                                     @enderror
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="no_telp"
+                                        class="form-label text-md-end">{{ __('No Telepon') }}<span class="text-danger">*</span></label>
+                                    <input id="no_telp" type="text"
+                                        class="form-control @error('no_telp') is-invalid @enderror" name="no_telp"
+                                        value="{{ old('no_telp') }}" placeholder="ex: 0821229019292" required autocomplete="no_telp">
+
+                                    @error('no_telp')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
                                 <div class="mb-3">
                                     <label for="email"
                                         class="form-label text-md-end">{{ __('Email Address') }}<span class="text-danger">*</span></label>

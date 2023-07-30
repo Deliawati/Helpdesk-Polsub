@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Chatbot;
 use App\Models\KategoriLayanan;
 use App\Models\Tiket;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 
 class TiketController extends Controller
@@ -101,5 +103,32 @@ class TiketController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function notifikasi(string $id)
+    {
+        $tiket = Tiket::findOrFail($id);
+        
+        // get all admin where kategori_id = $tiket->kategori_id
+        $admins = User::whereHas('permissions', function ($q) use ($tiket) {
+            $q->where('kategori_id', $tiket->kategori_id);
+        })->get();
+
+        // send notification to admin
+        foreach ($admins as $admin) {
+            // get no telp
+            $no_telp = $admin->no_telp;
+            // set message
+            $message = "Harap segera dibalas pertanyaan baru dari " . auth()->user()->name . " dengan kategori " . 
+                $tiket->kategori->nama . ". Silahkan login ke dashboard untuk membalas pertanyaan.";
+            // via wa
+            try {
+                $respose = Http::get(env('APP_WA', 'http://localhost:3000') . '/api?tujuan=' . $no_telp . '&pesan=' . $message);
+            } catch (\Throwable $th) {
+                return redirect()->back()->with('error', 'Pesan gagal dikirim');
+            }
+        }
+    
+        return redirect()->back()->with('success', 'Pesan berhasil dikirim');
     }
 }

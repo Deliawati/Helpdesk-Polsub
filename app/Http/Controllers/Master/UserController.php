@@ -45,6 +45,7 @@ class UserController extends Controller
         //
         $request->validate([
             'name' => 'required|string|max:255',
+            'no_telp' => 'required|string|max:15|unique:users',
             'email' => 'required|string|max:255|unique:users',
             'password' => 'required|string',
             'permissions' => 'nullable|array',
@@ -52,6 +53,7 @@ class UserController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'no_telp' => $request->no_telp,
             'email' => $request->email,
             'role' => 'admin',
             'password' => bcrypt($request->password),            
@@ -90,6 +92,7 @@ class UserController extends Controller
         //
         $request->validate([
             'name' => 'required|string|max:255',
+            'no_telp' => 'required|string|max:15|unique:users,no_telp,'.$id,
             'email' => 'required|string|max:255|unique:users,email,' . $id,
             'permissions' => 'nullable|array',
         ]);
@@ -97,6 +100,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update([
             'name' => $request->name,
+            'no_telp' => $request->no_telp,
             'email' => $request->email,
         ]);
 

@@ -95,6 +95,12 @@
                                     </td>
                                     <td>{{ $tiket->created_at }}</td>
                                     <td>
+                                        @if(!$tiket->balasan)
+                                            <a href="{{ route('modul-tiket.notifikasi', $tiket->id) }}" class="btn btn-sm btn-success" title="beritahu admin ybs via wa">
+                                                <i class="bx bxl-whatsapp"></i>
+                                            </a>
+                                        @endif
+
                                         <button class="btn btn-info btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#balasModal{{ $tiket->id }}">
                                             <i class="bx bx-info-circle"></i>

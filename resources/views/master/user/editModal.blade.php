@@ -16,6 +16,11 @@
                             value="{{ $user->name }}">
                     </div>
                     <div class="mb-3">
+                        <label for="no_telp" class="form-label">No Telepon</label>
+                        <input type="text" class="form-control" id="no_telp" name="no_telp"
+                            value="{{ $user->no_telp }}">
+                    </div>
+                    <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" name="email"
                             value="{{ $user->email }}">
