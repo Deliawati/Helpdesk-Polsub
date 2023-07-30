@@ -27,8 +27,9 @@ class TiketController extends Controller
             $permissions = auth()->user()->permissions;
             foreach($permissions as $permission){
                 $data['kategori'][] = $permission->kategori;
+                $data['kategori_id'][] = $permission->kategori->id;
             }
-            $data['tikets'] = Tiket::whereIn('kategori_id', $data['kategori'])->get();
+            $data['tikets'] = Tiket::whereIn('kategori_id', $data['kategori_id'])->get();
         }
 
         if($request->get('kategori')){
