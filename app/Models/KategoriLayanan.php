@@ -12,4 +12,9 @@ class KategoriLayanan extends Model
     protected $fillable = [
         'nama',
     ];
+
+    public function faqs()
+    {
+        return $this->hasMany(Faq::class, 'kategori_id');
+    }
 }

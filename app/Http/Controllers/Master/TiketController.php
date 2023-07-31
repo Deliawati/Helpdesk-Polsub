@@ -120,8 +120,8 @@ class TiketController extends Controller
             // get no telp
             $no_telp = $admin->no_telp;
             // set message
-            $message = "Harap segera dibalas pertanyaan baru dari " . auth()->user()->name . " dengan kategori " . 
-                $tiket->kategori->nama . ". Silahkan login ke dashboard untuk membalas pertanyaan.";
+            $message = "Harap segera dibalas pertanyaan baru dengan kategori ".$tiket->kategori->nama.". 
+                Silahkan login ke dashboard untuk membalas pertanyaan.";
             // via wa
             try {
                 $respose = Http::get(env('APP_WA', 'http://localhost:3000') . '/api?tujuan=' . $no_telp . '&pesan=' . $message);

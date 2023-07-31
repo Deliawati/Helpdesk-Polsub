@@ -90,7 +90,7 @@
                                         @if ($tiket->balasan)
                                             <span class="badge bg-success">Dibalas</span>
                                         @else
-                                            <span class="badge bg-danger">Pending</span>
+                                            <span class="badge bg-danger">Belum Dibalas</span>
                                         @endif
                                     </td>
                                     <td>{{ $tiket->created_at }}</td>
@@ -125,7 +125,7 @@
         $(document).ready(function() {
             $('table').DataTable({
                 order: [
-                    [5, 'desc'],
+                    [5, 'asc'],
                     [0, 'asc']
                 ],
             });

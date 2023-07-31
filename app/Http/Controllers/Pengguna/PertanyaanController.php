@@ -52,8 +52,7 @@ class PertanyaanController extends Controller
             // get no telp
             $no_telp = $admin->no_telp;
             // set message
-            $message = "Harap segera dibalas pertanyaan baru dengan kategori ".$tiket->kategori->nama.". 
-                Silahkan login ke dashboard untuk membalas pertanyaan.";
+            $message = "Pertanyaan baru dari singgih dengan kategori ".$tiket->kategori->nama.". Silahkan login ke dashboard untuk melihat pertanyaan.";
             // via wa
             try {
                 $respose = Http::get(env('APP_WA', 'http://localhost:3000') . '/api?tujuan=' . $no_telp . '&pesan=' . $message);
@@ -67,7 +66,8 @@ class PertanyaanController extends Controller
 
     public function faq()
     {
-        $data['faqs'] = Faq::all();
+        $data['kategoris'] = KategoriLayanan::all();
+        
         return view('pengguna.pertanyaan.faq', $data);
     }
 }
