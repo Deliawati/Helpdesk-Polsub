@@ -17,7 +17,7 @@ class Chatbot extends Model
 
     public static function getBestMatch($query, $data)
     {
-        $bestRatio = 0;
+        $bestRatio = 40;
         $bestMatch = null;
 
         foreach ($data as $item) {

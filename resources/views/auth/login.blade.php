@@ -93,7 +93,7 @@
                     class="form-control @error('email') is-invalid @enderror"
                     id="email"
                     name="email"
-                    placeholder="Enter your email or username"
+                    placeholder="Masukan Email Anda"
                     autofocus
                   />
                   @error('email')
@@ -104,7 +104,7 @@
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
-                    <label class="form-label" for="password">Password</label>
+                    <label class="form-label" for="password">Kata Sandi</label>
                     {{-- <a href="auth-forgot-password-basic.html">
                       <small>Forgot Password?</small>
                     </a> --}}
@@ -126,12 +126,12 @@
                         </div>
                     @enderror
                 </div>
-                <div class="d-flex justify-content-between mb-3">
+                {{-- <div class="d-flex justify-content-between mb-3">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="remember-me" />
                     <label class="form-check-label" for="remember-me"> Remember Me </label>
-                  </div>
-                  <a href="{{route('password.request')}}" class="float-end">Forgot Password</a>
+                  </div> --}}
+                  <a href="{{route('password.request')}}" class="float-end">Lupa Kata Sandi</a>
                 </div>
                 <div class="mb-3">
                   <button class="btn btn-defaut d-grid w-100" type="submit" style="background-color:#146C94; color:white;">Login</button>

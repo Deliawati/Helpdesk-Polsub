@@ -44,7 +44,7 @@
 
                                 <div class="mb-3">
                                     <label for="email"
-                                        class="form-label text-md-end">{{ __('Email Address') }}<span class="text-danger">*</span></label>
+                                        class="form-label text-md-end">{{ __('Email') }}<span class="text-danger">*</span></label>
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" placeholder="ex: delia@mail.com" required autocomplete="email">

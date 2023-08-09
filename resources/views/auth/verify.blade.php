@@ -22,7 +22,7 @@
                             <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                                 @csrf
                                 <button type="submit"
-                                    class="btn btn-link p-0 m-0 align-baseline">{{ __('klik disini untuk mengirimnya kembali') }}</button>.
+                                    class="btn btn-link p-0 m-0 align-baseline">{{ __('Klik disini untuk mengirimnya kembali') }}</button>.
                             </form>
                         </div>
                     </div>

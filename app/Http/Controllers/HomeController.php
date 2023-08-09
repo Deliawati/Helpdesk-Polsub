@@ -24,32 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        switch (auth()->user()->role) {
-            case 'admin1':
-                // get data tiket dengan kategori 'UKT', 'beasiswa', 'kelulusan'
-                $data['tiket_dibalas'] = Tiket::whereNotNull('balasan')->whereIn('kategori', ['UKT', 'beasiswa', 'kelulusan'])
-                    ->count();
-                $data['tiket_belum_dibalas'] = Tiket::whereNull('balasan')->whereIn('kategori', ['UKT', 'beasiswa', 'kelulusan'])
-                    ->count();            
-                break;
-            case 'admin2':
-                // get data tiket dengan kategori 'PMB', 'perkuliahan'
-                $data['tiket_dibalas'] = Tiket::whereNotNull('balasan')->whereIn('kategori', ['PMB', 'perkuliahan'])
-                    ->count();
-                $data['tiket_belum_dibalas'] = Tiket::whereNull('balasan')->whereIn('kategori', ['PMB', 'perkuliahan'])
-                    ->count();            
-                break;
-            case 'admin3':
-                // get data tiket dengan kategori 'surat menyurat'
-                $data['tiket_dibalas'] = Tiket::whereNotNull('balasan')->where('kategori', 'surat menyurat')
-                    ->count();
-                $data['tiket_belum_dibalas'] = Tiket::whereNull('balasan')->where('kategori', 'surat menyurat')
-                    ->count();            
-                break;            
-            default:
-                $data['tiket_dibalas'] = Tiket::whereNotNull('balasan')->count();
-                $data['tiket_belum_dibalas'] = Tiket::whereNull('balasan')->count();
-                break;
+        if (auth()->user()->role == 'superadmin') {
+            $data['tiket_dibalas'] = Tiket::whereNotNull('balasan')->count();
+            $data['tiket_belum_dibalas'] = Tiket::whereNull('balasan')->count();
+        } else {
+            $kategori = auth()->user()->permissions;
+            foreach ($kategori as $k) {
+                $kategori_id[] = $k->kategori->id;
+            }
+            $data['tiket_dibalas'] = Tiket::whereIn('kategori_id', $kategori_id)->whereNotNull('balasan')->count();
+            $data['tiket_belum_dibalas'] = Tiket::whereIn('kategori_id', $kategori_id)->whereNull('balasan')->count();
         }
         return view('home', $data);
     }
